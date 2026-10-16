@@ -3,254 +3,738 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Aaradhya Enertech Industries provides professional transformer sales, high-quality parts supply, and electrical maintenance services in Jaipur, Rajasthan." />
-  <title>Aaradhya Enertech Industries | Professional Transformer & Electrical Solutions</title>
-  
-  <!-- Open Graph / Social Media Meta Tags -->
+  <meta name="description" content="Aaradhya Enertech Industries - Leading Manufacturer of CRGO Cut Laminations, Core Frame Assemblies, Slit Coils, Distribution & Power Transformers in Jaipur, Rajasthan." />
+  <title>Aaradhya Enertech Industries | Precision Transformer Core Solutions</title>
+
+  <!-- Open Graph / Meta -->
   <meta property="og:title" content="Aaradhya Enertech Industries" />
-  <meta property="og:description" content="Reliable transformer sales, parts supply, and electrical maintenance services for industrial, commercial, and residential needs in Jaipur." />
+  <meta property="og:description" content="Precision Transformer Core Solutions, CRGO Laminations, Core Assemblies and Transformers." />
   <meta property="og:image" content="https://www.aaradhyaenertech.com/logo.png" />
   <meta property="og:url" content="https://www.aaradhyaenertech.com/" />
   <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Structured Data for Local SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Aaradhya Enertech Industries",
-    "description": "Professional Transformer Sales & Electrical Solutions",
-    "url": "https://www.aaradhyaenertech.com/",
-    "logo": "https://www.aaradhyaenertech.com/logo.png",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Plot No-96 A, Ramesh Vihar, Benad Road, Jhotwara",
-      "addressLocality": "Jaipur",
-      "addressRegion": "Rajasthan",
-      "postalCode": "302012",
-      "addressCountry": "IN"
-    }
-  }
-  </script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <a href="tel:+917976422578" class="top-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          +91-7976422578
+        </a>
+        <a href="mailto:aaradhyaenertech@outlook.com" class="top-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          aaradhyaenertech@outlook.com
+        </a>
+      </div>
+      <div class="top-bar-right">
+        <span class="top-item">
+          <strong>GSTIN:</strong> 08ACOFA2768P1ZS
+        </span>
+        <span class="top-item location-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          Jhotwara, Jaipur, Rajasthan
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
   <header class="header">
     <div class="container nav">
       <a class="brand" href="#home">
-        <img src="logo.png" alt="Aaradhya Enertech Industries" class="brand-logo" />
+        <img src="logo-full.png?v=3" alt="Aaradhya Enertech Industries" class="brand-logo-full" />
       </a>
-      <button class="menu-btn" aria-label="Open menu">☰</button>
-      <nav class="nav-links">
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰</button>
+      <nav class="nav-links" id="navLinks">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#products">Products</a>
-        <a href="#capabilities">Capabilities</a>
+        <a href="#transformers">Transformers</a>
+        <a href="#manufacturing">Manufacturing</a>
+        <a href="#quality">Quality</a>
+        <a href="#industries">Industries</a>
         <a href="#contact">Contact</a>
       </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary btn-quote" href="#contact">Request a Quote ↗</a>
+      </div>
     </div>
   </header>
 
-  <main id="home">
-    <section class="hero">
-      <div class="hero-grid container">
-        <div class="hero-copy">
-          <p class="eyebrow">ENERGY • ELECTRICAL • INDUSTRIAL</p>
-          <h1>Powering reliable<br><span>industrial solutions.</span></h1>
-          <p class="hero-text">
-            Reliable transformer sales, high-quality parts supply, and comprehensive electrical maintenance services for industrial and commercial needs in Jaipur.
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="hero-overlay"></div>
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot">■</span> PRECISION TRANSFORMER CORE SOLUTIONS
+          </div>
+          <h1 class="hero-title">
+            Powering the Future with <span class="highlight">Precision</span> Transformer Core Solutions
+          </h1>
+          <p class="hero-subtitle">
+            Leading Manufacturer of CRGO Cut Laminations, Core Frame Assemblies, Slit Coils, Distribution Transformers and Power Transformers.
           </p>
-          <div class="actions">
-            <a class="btn btn-primary" href="#products">Explore Products</a>
-            <a class="btn btn-outline" href="#contact">Request an Enquiry</a>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Request a Quote ↗</a>
+            <a class="btn btn-outline" href="#contact">Contact Us</a>
           </div>
         </div>
-        <div class="hero-art">
-          <div class="energy-ring ring1"></div>
-          <div class="energy-ring ring2"></div>
-          <div class="transformer-card">
-            <div class="bolt">⚡</div>
-            <div>
-              <strong>ENERTECH</strong>
-              <small>Industrial Power Solutions</small>
+
+        <!-- Floating Stats Glass Card -->
+        <div class="hero-stats-card">
+          <div class="stat-row">
+            <div class="stat-number">15+</div>
+            <div class="stat-label">YEARS INDUSTRY EXPERTISE</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">CORES DELIVERED ANNUALLY</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">BIS COMPLIANT MANUFACTURING</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-number">24×7</div>
+            <div class="stat-label">TECHNICAL SUPPORT</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Strip Under Hero -->
+      <div class="hero-features-strip">
+        <div class="container features-ticker">
+          <div class="ticker-item"><span class="icon">🛡️</span> BIS Compliant</div>
+          <div class="ticker-item"><span class="icon">✓</span> Quality Assured</div>
+          <div class="ticker-item"><span class="icon">⚙️</span> In-House Manufacturing</div>
+          <div class="ticker-item"><span class="icon">🎯</span> Precision Tolerances</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications & Compliance Badges Strip -->
+    <section class="certifications-bar">
+      <div class="container cert-container">
+        <div class="cert-text">
+          <div class="section-tag">CERTIFICATIONS</div>
+          <h3>Audited, certified and registered — built to industry standards.</h3>
+        </div>
+        <div class="cert-badges">
+          <div class="cert-pill"><span>🛡️</span> ISO 9001:2015</div>
+          <div class="cert-pill"><span>🌱</span> ISO 14001</div>
+          <div class="cert-pill"><span>⛑️</span> ISO 45001</div>
+          <div class="cert-pill"><span>📋</span> BIS Compliant</div>
+          <div class="cert-pill"><span>🏢</span> GST Registered</div>
+          <div class="cert-pill"><span>✅</span> MSME / Udyam</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us (6-Reasons Grid) -->
+    <section class="section why-choose-us" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">WHY CHOOSE US</span>
+          <h2>Six reasons leading transformer manufacturers partner with us.</h2>
+        </div>
+
+        <div class="reasons-grid">
+          <div class="reason-card">
+            <div class="reason-num">01</div>
+            <h3>Advanced Manufacturing</h3>
+            <p>Modern CNC slitting, cutting and assembly infrastructure engineered for maximum accuracy.</p>
+          </div>
+          <div class="reason-card">
+            <div class="reason-num">02</div>
+            <h3>Experienced Team</h3>
+            <p>Decades of collective technical expertise across specialized transformer core engineering.</p>
+          </div>
+          <div class="reason-card">
+            <div class="reason-num">03</div>
+            <h3>Competitive Pricing</h3>
+            <p>Optimised in-house processes that translate directly to better commercial terms and value.</p>
+          </div>
+          <div class="reason-card">
+            <div class="reason-num">04</div>
+            <h3>Timely Delivery</h3>
+            <p>Synchronized production planning and logistics network built for guaranteed on-time dispatch.</p>
+          </div>
+          <div class="reason-card">
+            <div class="reason-num">05</div>
+            <h3>Customised Solutions</h3>
+            <p>Build-to-print components, custom step-lap miter designs, and specialized core structures.</p>
+          </div>
+          <div class="reason-card">
+            <div class="reason-num">06</div>
+            <h3>Quality Commitment</h3>
+            <p>Rigorous inspection at every fabrication stage, accompanied by full material traceability.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Transformers & Manufacturing Overview Section -->
+    <section class="section transformer-overview-section" id="transformers">
+      <div class="container">
+        <div class="overview-grid">
+          <div class="overview-left">
+            <h2 class="overview-title">OUR TRANSFORMERS</h2>
+            <div class="brand-rule"></div>
+
+            <div class="overview-body">
+              <p>
+                <strong>Aaradhya Enertech Industries</strong> has been dedicated to manufacturing high-performance power equipment and precision transformer components. Our transformer division produces power and distribution transformers, inverter duty transformers for solar and wind applications, and custom furnace transformers—all engineered up to <strong>20 MVA and 33 kV class</strong>.
+              </p>
+              <p>
+                Operating comprehensive in-house manufacturing, automated CNC slitting, and step-lap core stacking facilities in Jaipur, Rajasthan, we supply leading EPC contractors, state power utilities, and renewable energy developers across India.
+              </p>
+              <p>
+                Our transformer core components—processed to stringent standards from prime-grade CRGO electrical steel—deliver ultra-low watt loss, minimal magnetostriction noise, and long-term operational reliability across demanding grid conditions.
+              </p>
+            </div>
+
+            <div class="mini-stats-grid">
+              <div class="mini-stat-tile">
+                <div class="mini-figure">📈 15+ Years</div>
+                <div class="mini-label">Industry Expertise · High Voltage</div>
+              </div>
+              <div class="mini-stat-tile">
+                <div class="mini-figure">⚙️ In-House</div>
+                <div class="mini-label">CNC Slitting & Core Stacking</div>
+              </div>
+              <div class="mini-stat-tile">
+                <div class="mini-figure">📐 25,000+</div>
+                <div class="mini-label">Sq ft Operational Infrastructure</div>
+              </div>
+              <div class="mini-stat-tile">
+                <div class="mini-figure">⚡ 33 kV</div>
+                <div class="mini-label">Class Approved · IS 1180 & IEC 60076</div>
+              </div>
+            </div>
+
+            <div class="overview-cta-wrap">
+              <a href="#contact" class="btn btn-primary">Get In Touch →</a>
+            </div>
+          </div>
+
+          <div class="overview-right">
+            <div class="plant-image-card">
+              <img src="images/factory-plant.png" alt="Aaradhya Enertech Manufacturing Facility" class="plant-img" />
+              <div class="plant-badge">Jaipur Manufacturing Infrastructure</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="stats">
-      <div class="container stats-grid">
-        <div><strong>01</strong><span>Company Profile</span></div>
-        <div><strong>02</strong><span>Products & Solutions</span></div>
-        <div><strong>03</strong><span>Project Portfolio</span></div>
-        <div><strong>04</strong><span>Contact & Enquiries</span></div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="container two-col">
-        <div>
-          <p class="eyebrow">ABOUT THE COMPANY</p>
-          <h2>A professional digital profile for Aaradhya Enertech Industries.</h2>
-        </div>
-        <div>
-          <p>
-            Aaradhya Enertech Industries is presented here as an industrial electrical
-            company. This prototype intentionally avoids inventing technical claims,
-            certifications or product specifications that have not yet been provided.
-          </p>
-          <p class="muted">
-            Replace this section with the company's approved About Us content, experience,
-            manufacturing capability, product range and quality information.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section dark" id="products">
+    <!-- Products & Solutions -->
+    <section class="section products-section" id="products">
       <div class="container">
-        <div class="section-head">
+        <div class="section-header center">
+          <span class="section-tag">PRODUCTS & CAPABILITIES</span>
+          <h2>Precision Transformer Cores & Power Transformers</h2>
+          <p class="section-sub">Manufactured using prime grade CRGO electrical steel, automated CNC processing, and stringent testing conforming to IS 1180 and IEC 60076.</p>
+        </div>
+
+        <!-- Capability Benchmark Strip -->
+        <div class="benchmark-strip">
+          <div class="benchmark-item">
+            <span class="benchmark-val">4 Weeks</span>
+            <span class="benchmark-label">Standard Dispatch Timeline</span>
+            <p>Streamlined supply chain and in-house slitting ensure zero external production delays.</p>
+          </div>
+          <div class="benchmark-item">
+            <span class="benchmark-val">20 MVA</span>
+            <span class="benchmark-label">Design & Testing Capacity</span>
+            <p>Up to 33 kV class transformers engineered with high short-circuit and dielectric strength.</p>
+          </div>
+          <div class="benchmark-item">
+            <span class="benchmark-val">IS 1180</span>
+            <span class="benchmark-label">BIS & IEC Certified</span>
+            <p>Complete adherence to national and international grid efficiency and loss standards.</p>
+          </div>
+        </div>
+
+        <!-- Section 1: Transformer Cores & CRGO Components -->
+        <div class="product-category-header">
           <div>
-            <p class="eyebrow">PRODUCTS & SOLUTIONS</p>
-            <h2>Build your product catalogue here.</h2>
+            <span class="cat-pill">Category 01</span>
+            <h3>CRGO Electrical Steel & Core Solutions</h3>
           </div>
-          <span class="pill">Prototype</span>
+          <a href="#contact" class="cat-link">Request Core Specifications ↗</a>
         </div>
-        <div class="cards">
-          <article class="card">
-            <div class="card-icon">01</div>
-            <h3>Transformers</h3>
-            <p>Add confirmed transformer types, ratings, voltage ranges and applications.</p>
-            <a href="#contact">Enquire →</a>
-          </article>
-          <article class="card">
-            <div class="card-icon">02</div>
-            <h3>LT / HT Panels</h3>
-            <p>Add the company's actual panel range, technical specifications and use cases.</p>
-            <a href="#contact">Enquire →</a>
-          </article>
-          <article class="card">
-            <div class="card-icon">03</div>
-            <h3>Electrical Solutions</h3>
-            <p>Add the approved services, installation, maintenance or customized solutions.</p>
-            <a href="#contact">Enquire →</a>
-          </article>
-        </div>
-      </div>
-    </section>
 
-    <section class="section" id="capabilities">
-      <div class="container">
-        <p class="eyebrow">COMPANY PROFILE</p>
-        <h2>What the full website can showcase</h2>
-        <div class="feature-grid">
-          <div class="feature"><span>01</span><div><h3>Manufacturing</h3><p>Factory, machinery, production stages and manufacturing capabilities.</p></div></div>
-          <div class="feature"><span>02</span><div><h3>Quality & Testing</h3><p>Approved testing facilities, standards and quality documentation.</p></div></div>
-          <div class="feature"><span>03</span><div><h3>Projects</h3><p>Completed projects with photographs, locations and product details.</p></div></div>
-          <div class="feature"><span>04</span><div><h3>Certificates</h3><p>BIS, ISO and other certificates only after the company confirms them.</p></div></div>
-        </div>
-      </div>
-    </section>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img-wrap">
+              <img src="images/core_assembly.png" alt="CRGO Cut Laminations" class="product-img" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Core Components</span>
+              <h3>CRGO Cut Laminations</h3>
+              <p>Step-lap mitered, 90° cut and custom punched laminations produced from prime CRGO steel grades (M4, M5, Hi-B, Laser Scribed) with ultra-low watt loss.</p>
+              <div class="spec-strip">
+                Width: 20mm–1000mm · Thickness: 0.23mm, 0.27mm, 0.30mm · Burr: &lt; 0.02mm
+              </div>
+              <div class="tag-row">
+                <span class="pill-tag">Step-Lap Miter</span>
+                <span class="pill-tag">Hi-B Grade</span>
+                <span class="pill-tag">V-Notch</span>
+              </div>
+              <a href="#contact" class="btn btn-sm btn-outline-dark">Enquire Now ↗</a>
+            </div>
+          </div>
 
-    <section class="section process">
-      <div class="container">
-        <p class="eyebrow">WORKFLOW</p>
-        <h2>From enquiry to delivery</h2>
-        <div class="steps">
-          <div><b>01</b><span>Requirement</span><p>Customer shares electrical requirement.</p></div>
-          <div><b>02</b><span>Technical Discussion</span><p>Confirm product and specification.</p></div>
-          <div><b>03</b><span>Quotation</span><p>Commercial and technical proposal.</p></div>
-          <div><b>04</b><span>Execution</span><p>Manufacturing / supply / service.</p></div>
+          <div class="product-card">
+            <div class="product-img-wrap">
+              <img src="images/core_coil_assembly.png" alt="Core Frame Assemblies" class="product-img" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Built-Up Cores</span>
+              <h3>Core Frame Assemblies</h3>
+              <p>Fully assembled, banded, and clamped transformer core frames ready for direct coil insertion. Built with CNC precision channels and insulated tie-rods.</p>
+              <div class="spec-strip">
+                Capacity: Distribution & Power · Stacking: 100% Step-Lap · Fully Tested
+              </div>
+              <div class="tag-row">
+                <span class="pill-tag">Banded Cores</span>
+                <span class="pill-tag">Low Noise</span>
+                <span class="pill-tag">Clamped Frame</span>
+              </div>
+              <a href="#contact" class="btn btn-sm btn-outline-dark">Enquire Now ↗</a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-img-wrap">
+              <img src="images/coil_winding.png" alt="CRGO Slit Coils" class="product-img" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Processed Coils</span>
+              <h3>CRGO Slit Coils</h3>
+              <p>Precision CNC-slit CRGO coils with clean, burr-free edges and tight width tolerances. Supplied in customized OD/ID packaged with heavy-duty edge protectors.</p>
+              <div class="spec-strip">
+                Slit Width: From 20mm · Camber: Minimal · Surface Insulation: Class C-5
+              </div>
+              <div class="tag-row">
+                <span class="pill-tag">Slit Coils</span>
+                <span class="pill-tag">Burr-Free</span>
+                <span class="pill-tag">Export Packed</span>
+              </div>
+              <a href="#contact" class="btn btn-sm btn-outline-dark">Enquire Now ↗</a>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
-    <section class="section faq" id="faq">
-      <div class="container">
-        <div class="section-head">
+
+        <!-- Section 2: Complete Transformers & Power Units -->
+        <div class="product-category-header" style="margin-top: 55px;">
           <div>
-            <p class="eyebrow">FAQS</p>
-            <h2>Frequently Asked Questions</h2>
+            <span class="cat-pill">Category 02</span>
+            <h3>Power, Distribution & Special Transformers</h3>
           </div>
+          <a href="#contact" class="cat-link">Request Transformer Quote ↗</a>
         </div>
-        <div class="faq-list">
-          <div class="faq-item">
-            <button class="faq-question">Do you offer custom transformer manufacturing? <span class="icon">+</span></button>
-            <div class="faq-answer"><p>Yes, we specialize in designing and manufacturing custom transformers tailored to your exact technical specifications, voltage requirements, and application needs.</p></div>
+
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img-wrap">
+              <img src="images/transformer.png" alt="Power and Distribution Transformers" class="product-img" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Oil-Immersed Units</span>
+              <h3>Power & Distribution Transformers</h3>
+              <p>Oil-immersed in high-dielectric mineral oil. Designed up to 20 MVA and 33 kV class. ONAN and ONAF cooling with copper or aluminium winding and OCTC/OLTC tapping.</p>
+              <div class="spec-strip">
+                Rating: 16 kVA–20 MVA · HV: Up to 33 kV · Standard: IS 1180 / IEC 60076
+              </div>
+              <div class="tag-row">
+                <span class="pill-tag">Utilities</span>
+                <span class="pill-tag">Industrial</span>
+                <span class="pill-tag">EPC Substations</span>
+              </div>
+              <a href="#contact" class="btn btn-sm btn-outline-dark">Enquire Now ↗</a>
+            </div>
           </div>
-          <div class="faq-item">
-            <button class="faq-question">What is the standard warranty on your products? <span class="icon">+</span></button>
-            <div class="faq-answer"><p>All our transformers and panels come with a standard 12-month warranty against manufacturing defects. Extended warranties are available upon request.</p></div>
+
+          <div class="product-card">
+            <div class="product-img-wrap">
+              <img src="images/tanking.png" alt="Inverter Duty Transformers" class="product-img" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Renewable Energy</span>
+              <h3>Inverter Duty Transformers</h3>
+              <p>Purpose-engineered for utility-scale solar and wind projects. Built for high harmonic content, frequent switching cycles, and elevated thermal demands in 2, 3, and 5-winding setups.</p>
+              <div class="spec-strip">
+                Rating: Up to 20 MVA · HV: Up to 33 kV · Multi-Winding Configurations
+              </div>
+              <div class="tag-row">
+                <span class="pill-tag">Solar PV</span>
+                <span class="pill-tag">Wind Farms</span>
+                <span class="pill-tag">Grid Tie</span>
+              </div>
+              <a href="#contact" class="btn btn-sm btn-outline-dark">Enquire Now ↗</a>
+            </div>
           </div>
-          <div class="faq-item">
-            <button class="faq-question">Do you provide installation and after-sales maintenance? <span class="icon">+</span></button>
-            <div class="faq-answer"><p>Yes, our team provides full commissioning, installation support, and comprehensive after-sales maintenance services for industrial and commercial clients.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question">What certifications do your products hold? <span class="icon">+</span></button>
-            <div class="faq-answer"><p>Our manufacturing processes adhere to strict quality controls. Products can be designed to meet standard ISO, BIS/ISI, and IEC technical specifications based on your project requirements.</p></div>
+
+          <div class="product-card">
+            <div class="product-img-wrap">
+              <img src="images/cast_resin.png" alt="Cast Resin Dry-Type Transformers" class="product-img" />
+            </div>
+            <div class="product-body">
+              <span class="product-tag">Dry Type</span>
+              <h3>Cast Resin Dry-Type Transformers</h3>
+              <p>Fire-retardant, maintenance-free epoxy cast resin transformers designed for high-density buildings, hospitals, airports, and commercial centers with zero oil spill hazard.</p>
+              <div class="spec-strip">
+                Insulation: Class F / Class H · Eco-Friendly · Non-Flammable
+              </div>
+              <div class="tag-row">
+                <span class="pill-tag">Commercial</span>
+                <span class="pill-tag">Airports</span>
+                <span class="pill-tag">Metro Rail</span>
+              </div>
+              <a href="#contact" class="btn btn-sm btn-outline-dark">Enquire Now ↗</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section contact" id="contact">
-      <div class="container contact-grid">
-        <div>
-          <p class="eyebrow">CONTACT US</p>
-          <h2>Let's discuss your requirement.</h2>
-          <p class="muted">The form is a static prototype. It can later be connected to Google Sheets, email or WhatsApp.</p>
-          <div class="address">
-            <strong>Aaradhya Enertech Industries</strong>
-            <p>Plot No-96 A, Ramesh Vihar<br>
-            Benad Road, Jhotwara<br>
-            Jaipur, Rajasthan - 302012</p>
-            <p><b>GST:</b> 08ACGFA2768P1ZS<br><b>State Code:</b> 08</p>
+    <!-- Industries Served Section -->
+    <section class="section industries-section" id="industries">
+      <div class="container">
+        <div class="industries-grid">
+          <div class="industries-info">
+            <span class="section-tag">INDUSTRIES SERVED</span>
+            <h2>Trusted across the power value chain.</h2>
+            <div class="industry-image-card">
+              <img src="images/solar_panel.png" alt="Industrial Solar Facility" class="industry-img" />
+            </div>
+          </div>
+
+          <div class="industries-list">
+            <div class="ind-item">
+              <div class="ind-num">01</div>
+              <div class="ind-name">Power Utilities</div>
+              <div class="ind-arrow">→</div>
+            </div>
+            <div class="ind-item">
+              <div class="ind-num">02</div>
+              <div class="ind-name">Transformer Manufacturers</div>
+              <div class="ind-arrow">→</div>
+            </div>
+            <div class="ind-item">
+              <div class="ind-num">03</div>
+              <div class="ind-name">Electrical Contractors</div>
+              <div class="ind-arrow">→</div>
+            </div>
+            <div class="ind-item">
+              <div class="ind-num">04</div>
+              <div class="ind-name">Renewable Energy Projects</div>
+              <div class="ind-arrow">→</div>
+            </div>
+            <div class="ind-item">
+              <div class="ind-num">05</div>
+              <div class="ind-name">Industrial Plants</div>
+              <div class="ind-arrow">→</div>
+            </div>
+            <div class="ind-item">
+              <div class="ind-num">06</div>
+              <div class="ind-name">EPC Companies</div>
+              <div class="ind-arrow">→</div>
+            </div>
           </div>
         </div>
-        <form class="contact-form" id="contactForm" action="/submit" method="POST">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="text" name="name" placeholder="Your Name *" required />
-          <input type="text" name="company" placeholder="Company Name" />
-          <input type="tel" name="phone" placeholder="Phone Number *" required />
-          <input type="email" name="email" placeholder="Email Address" />
-          <select name="service">
-            <option value="">Select Requirement</option>
-            <option>Transformer</option>
-            <option>LT / HT Panel</option>
-            <option>Electrical Solution</option>
-            <option>Other</option>
-          </select>
-          <textarea name="message" rows="5" placeholder="Tell us about your requirement"></textarea>
-          <button class="btn btn-primary" type="submit">Send Enquiry</button>
-          <p class="form-note" id="formNote"></p>
-        </form>
+      </div>
+    </section>
+
+    <!-- Manufacturing Infrastructure & Quality -->
+    <section class="section dark-section" id="manufacturing">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">MANUFACTURING & QUALITY</span>
+          <h2>World-Class Precision Infrastructure in Jaipur</h2>
+          <p class="section-sub">Equipped with automated processing lines and rigorous testing protocols conforming to international standards.</p>
+        </div>
+
+        <div class="mfg-grid">
+          <div class="mfg-card">
+            <div class="mfg-icon">⚙️</div>
+            <h3>CNC Slitting & Shearing</h3>
+            <p>High-speed rotary slitting cutters maintaining width tolerance within ±0.1mm and edge burr below 0.02mm.</p>
+          </div>
+          <div class="mfg-card">
+            <div class="mfg-icon">📐</div>
+            <h3>Step-Lap Core Assembly</h3>
+            <p>Computer-controlled step-lap cutting and stacking to dramatically reduce no-load losses and magnetostriction noise.</p>
+          </div>
+          <div class="mfg-card">
+            <div class="mfg-icon">🧪</div>
+            <h3>Routine & Type Testing</h3>
+            <p>In-house testing facility for core watt-loss verification, magnetic flux density, insulation resistance, and voltage breakdown.</p>
+          </div>
+          <div class="mfg-card">
+            <div class="mfg-icon">📦</div>
+            <h3>Sealed Export Packaging</h3>
+            <p>Moisture-proof wrapping, sturdy wooden pallets, and steel strapping to preserve core geometry during transit.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery: Inside the Shop Floor -->
+    <section class="section gallery-section" id="quality">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">GALLERY</span>
+          <h2>Inside the shop floor.</h2>
+          <p class="section-sub">A glimpse into our manufacturing unit, core assemblies, testing bays, and finished units.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item item-large">
+            <img src="images/core_coil_assembly.png" alt="Core Coil Assembly" />
+            <div class="gallery-caption">Core Coil Assembly Ready for Tanking</div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/tanking.png" alt="Transformer Tanking" />
+            <div class="gallery-caption">Precision Transformer Tanking</div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/transformer.png" alt="Finished Transformer" />
+            <div class="gallery-caption">Assembled Transformer with Bushings</div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/coil_winding.png" alt="CRGO Coil Winding" />
+            <div class="gallery-caption">Prime CRGO Slit Coil Ready for Assembly</div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/core_assembly.png" alt="Core Assembly Framing" />
+            <div class="gallery-caption">Clamping Channels & Busbar Framing</div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/cast_resin.png" alt="Cast Resin Unit" />
+            <div class="gallery-caption">Dry Type Cast Resin Core Unit</div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/panel.png" alt="Control Panel Assembly" />
+            <div class="gallery-caption">Industrial Control & Switchgear Panels</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Quote Form Section -->
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <span class="section-tag">GET IN TOUCH</span>
+            <h2>Let's discuss your core or transformer requirement.</h2>
+            <p class="section-sub">Our engineering team is ready to evaluate your specifications, submit technical drawings, and provide competitive commercial proposals.</p>
+
+            <div class="info-blocks">
+              <div class="info-block">
+                <div class="icon">📍</div>
+                <div>
+                  <strong>Factory & Registered Office:</strong>
+                  <p>Plot No-96 A, Ramesh Vihar, Benad Road, Jhotwara, Jaipur, Rajasthan - 302012, India</p>
+                </div>
+              </div>
+              <div class="info-block">
+                <div class="icon">📞</div>
+                <div>
+                  <strong>Call & WhatsApp:</strong>
+                  <p><a href="tel:+917976422578">+91-7976422578</a></p>
+                </div>
+              </div>
+              <div class="info-block">
+                <div class="icon">✉️</div>
+                <div>
+                  <strong>Email:</strong>
+                  <p><a href="mailto:aaradhyaenertech@outlook.com">aaradhyaenertech@outlook.com</a></p>
+                </div>
+              </div>
+              <div class="info-block">
+                <div class="icon">🏛️</div>
+                <div>
+                  <strong>Tax & Legal Entity:</strong>
+                  <p>GSTIN: 08ACOFA2768P1ZS | Entity: Partnership Firm</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-wrapper">
+            <form class="quote-form" id="quoteForm">
+              <h3>Request a Technical Quote</h3>
+              <p>Fill out the details below and our team will respond within 2 hours.</p>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name">Your Name *</label>
+                  <input type="text" id="name" name="name" placeholder="John Doe" required />
+                </div>
+                <div class="form-group">
+                  <label for="company">Company Name</label>
+                  <input type="text" id="company" name="company" placeholder="e.g. ABC Transformers Ltd." />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone">Phone / WhatsApp Number *</label>
+                  <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" name="email" placeholder="john@company.com" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="product">Requirement Type</label>
+                <select id="product" name="product">
+                  <option value="CRGO Cut Laminations">CRGO Cut Laminations</option>
+                  <option value="Core Frame Assemblies">Core Frame Assemblies</option>
+                  <option value="CRGO Slit Coils">CRGO Slit Coils</option>
+                  <option value="Distribution Transformers">Distribution Transformers</option>
+                  <option value="Power Transformers">Power Transformers</option>
+                  <option value="Cast Resin Transformers">Cast Resin Transformers</option>
+                  <option value="Custom Engineering">Other / Custom Requirement</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Specifications / Requirements</label>
+                <textarea id="message" name="message" rows="4" placeholder="Mention core size, kVA rating, quantity, or drawing specifications..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">Submit Enquiry ↗</button>
+              <div id="formStatus" class="form-status"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ready to Source CTA Banner Strip -->
+    <section class="cta-banner">
+      <div class="container cta-container">
+        <div class="cta-text">
+          <h2>Ready to source your next batch of transformer cores?</h2>
+        </div>
+        <div class="cta-buttons">
+          <a class="btn btn-primary" href="#contact">Request a Quote ↗</a>
+          <a class="btn btn-outline" href="tel:+917976422578">Call +91-7976422578</a>
+        </div>
       </div>
     </section>
   </main>
 
+  <!-- Comprehensive Footer -->
   <footer class="footer">
     <div class="container footer-grid">
-      <div>
+      <!-- Col 1: Brand & Bio -->
+      <div class="footer-col brand-col">
         <a href="#home" class="brand footer-brand">
-          <img src="logo.png" alt="Aaradhya Enertech Industries" class="brand-logo" />
+          <img src="logo-full.png?v=3" alt="Aaradhya Enertech Industries" class="brand-logo-full" />
         </a>
-        <p>Industrial electrical company website prototype.</p>
+        <p class="footer-desc">
+          Manufacturer of CRGO Transformer Core Components and Transformer Products. Built on precision engineering and an uncompromising quality commitment.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-icon" aria-label="Facebook">f</a>
+          <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-icon" aria-label="Twitter">𝕏</a>
+          <a href="#" class="social-icon" aria-label="Instagram">📸</a>
+        </div>
       </div>
-      <div>
-        <h4>Address</h4>
-        <p>Plot No-96 A, Ramesh Vihar,<br>Benad Road, Jhotwara,<br>Jaipur, Rajasthan - 302012</p>
+
+      <!-- Col 2: Quick Links -->
+      <div class="footer-col">
+        <h4>QUICK LINKS</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#transformers">Transformers</a></li>
+          <li><a href="#manufacturing">Manufacturing</a></li>
+          <li><a href="#quality">Quality</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </div>
-      <div>
-        <h4>Registration</h4>
-        <p>GST: 08ACGFA2768P1ZS<br>State Code: 08</p>
+
+      <!-- Col 3: Products -->
+      <div class="footer-col">
+        <h4>PRODUCTS</h4>
+        <ul class="footer-links">
+          <li><a href="#products">CRGO Cut Laminations</a></li>
+          <li><a href="#products">Core Frame Assemblies</a></li>
+          <li><a href="#products">CRGO Slit Coils</a></li>
+          <li><a href="#products">Distribution Transformers</a></li>
+          <li><a href="#products">Power Transformers</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Get in Touch & Map -->
+      <div class="footer-col">
+        <h4>GET IN TOUCH</h4>
+        <div class="footer-contact">
+          <p class="addr-line">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            Plot No. 96A, Ramesh Vihar, Benad Road, Jhotwara, Jaipur, Rajasthan – 302012, India
+          </p>
+          <p><a href="tel:+917976422578">📞 +91-7976422578</a></p>
+          <p><a href="mailto:aaradhyaenertech@outlook.com">✉️ aaradhyaenertech@outlook.com</a></p>
+          <div class="tax-info">
+            <p><strong>GSTIN:</strong> 08ACOFA2768P1ZS</p>
+            <p><strong>ENTITY:</strong> Partnership Firm</p>
+          </div>
+
+          <!-- Google Maps Preview Card -->
+          <div class="map-card">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14227.427845724578!2d75.73602535!3d26.94291885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db30db803565b%3A0xe5ee13c1c87515d4!2sJhotwara%2C%20Jaipur%2C%20Rajasthan!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              width="100%" 
+              height="120" 
+              style="border:0; border-radius: 8px;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="copyright">© <span id="year"></span> Aaradhya Enertech Industries. Prototype.</div>
+
+    <!-- Copyright Bar -->
+    <div class="copyright">
+      <div class="container copyright-content">
+        <p>© 2026 Aaradhya Enertech Industries. All rights reserved.</p>
+        <p>GSTIN: 08ACOFA2768P1ZS • Jaipur, Rajasthan, India</p>
+      </div>
+    </div>
   </footer>
+
+  <!-- Floating WhatsApp Action -->
+  <a href="https://wa.me/917976422578?text=Hello%20Aaradhya%20Enertech%2C%20I%20am%20interested%20in%20your%20transformer%20core%20solutions." target="_blank" rel="noopener noreferrer" class="whatsapp-floating" aria-label="Chat with us on WhatsApp">
+    <span class="whatsapp-pill">• Chat with us on WhatsApp</span>
+    <span class="whatsapp-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824z"/></svg>
+    </span>
+  </a>
 
   <script src="script.js"></script>
 </body>
 </html>
-<!-- Trigger Vercel Deployment -->
