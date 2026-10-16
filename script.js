@@ -28,10 +28,22 @@ quoteForm?.addEventListener('submit', async (e) => {
 
   try {
     const formData = new FormData(quoteForm);
+
+    // Ensure all aliases are populated so both old and new Google Apps Script headers receive the values
+    const reqVal = formData.get('requirement') || formData.get('product') || '';
+    formData.set('requirement', reqVal);
+    formData.set('Requirement', reqVal);
+    formData.set('product', reqVal);
+
+    const msgVal = formData.get('message') || formData.get('specifications') || '';
+    formData.set('message', msgVal);
+    formData.set('specifications', msgVal);
+    formData.set('Specifications', msgVal);
+
     const data = new URLSearchParams(formData).toString();
 
     // Send to Google Apps Script endpoint
-    await fetch('https://script.google.com/macros/s/AKfycbwKEUblg9nj5bi75Qrlk18jP6_eVdejS_r3ROvq9RZIBZD4ufMPdlWpM15P4DeLVsQAmA/exec', {
+    await fetch('https://script.google.com/macros/s/AKfycbxsakkyXhCcJCRNTJkoitUa9ApFfHTu6I4ioGb4JOLsGABkiuoYqfk-3zSqrf3Kn88u/exec', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
