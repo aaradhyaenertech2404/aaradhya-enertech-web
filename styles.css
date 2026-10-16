@@ -1261,12 +1261,11 @@ body {
 }
 
 .footer-brand .brand-logo-full {
-  height: 52px;
+  height: 58px;
   width: auto;
-  background: #ffffff;
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
 }
 
 .footer-desc {
