@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aaradhya Enertech Industries | Operations & Inventory Management System</title>
+  <title>Aaradhya Enertech Industries | Operations &amp; Enterprise Dashboard</title>
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
   <link rel="shortcut icon" href="favicon.ico" />
   
@@ -122,6 +122,26 @@
       font-weight: 700;
     }
 
+    .nav-section-label {
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-weight: 800;
+      color: #64748B;
+      padding: 14px 14px 6px 14px;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-section-label:first-of-type {
+      border-top: none;
+      margin-top: 0;
+      padding-top: 4px;
+    }
+
     .sidebar-footer {
       padding: 16px;
       border-top: 1px solid var(--border);
@@ -213,6 +233,101 @@
     .btn-danger:hover {
       background: var(--danger);
       color: white;
+    }
+
+    /* --- LOGIN OVERLAY --- */
+    #authOverlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, #173d66 0%, #0A2540 60%, #051324 100%);
+      z-index: 10000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .login-box {
+      background: #111c33;
+      border: 1px solid rgba(0, 212, 178, 0.25);
+      border-radius: 20px;
+      width: 440px;
+      max-width: 100%;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 212, 178, 0.08);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .login-logo {
+      height: 48px;
+      object-fit: contain;
+      margin: 0 auto 16px auto;
+      display: block;
+    }
+
+    .login-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: white;
+      text-align: center;
+    }
+
+    .login-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 4px;
+      margin-bottom: 24px;
+    }
+
+    .login-error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      margin-bottom: 16px;
+      display: none;
+      text-align: center;
+    }
+
+    .login-credentials-hint {
+      background: rgba(0, 212, 178, 0.08);
+      border: 1px dashed rgba(0, 212, 178, 0.25);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-top: 20px;
+      font-size: 11px;
+      color: #94A3B8;
+      line-height: 1.5;
+    }
+
+    .user-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 12px;
+    }
+
+    .user-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, #0284c7 100%);
+      color: #0A2540;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 12px;
     }
 
     /* --- PAGE CONTAINERS --- */
@@ -530,6 +645,39 @@
 </head>
 <body>
 
+  <!-- Fullscreen Login Modal / Gate -->
+  <div id="authOverlay">
+    <div class="login-box">
+      <img src="brand-assets/logo-full-dark.png" alt="Aaradhya Logo" class="login-logo">
+      <h2 class="login-title">Operations &amp; ERP Portal</h2>
+      <p class="login-subtitle">Aaradhya Enertech Industries · Factory Management</p>
+
+      <div id="loginError" class="login-error">Invalid Username or Password</div>
+
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group" style="margin-bottom: 16px;">
+          <label>Username</label>
+          <input type="text" id="loginUsername" required placeholder="Enter username" autocomplete="username">
+        </div>
+        <div class="form-group" style="margin-bottom: 22px;">
+          <label>Password</label>
+          <input type="password" id="loginPassword" required placeholder="Enter password" autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 12px; font-size: 14px;">
+          Sign In to Operations Desk ➔
+        </button>
+      </form>
+
+      <div class="login-credentials-hint">
+        <strong style="color: var(--accent);">Role-Based Demo Logins:</strong><br>
+        • <strong style="color:white">Superuser:</strong> <code style="color:var(--accent)">superuser</code> / <code style="color:white">super123</code> (Full access to all modules, financial P&amp;L &amp; audit)<br>
+        • <strong style="color:white">Admin:</strong> <code style="color:var(--accent)">admin</code> / <code style="color:white">admin123</code> (Full Operations, Stock &amp; Production control)<br>
+        • <strong style="color:white">Staff / Operator:</strong> <code style="color:var(--accent)">staff</code> / <code style="color:white">staff123</code> (Production, Attendance &amp; Stock view; Expenses locked)
+      </div>
+    </div>
+  </div>
+
   <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-header">
@@ -537,27 +685,51 @@
     </div>
 
     <nav class="sidebar-nav">
-      <a class="nav-item active" onclick="switchTab('dashboard')">
-        <span>📊</span> Dashboard &amp; Summary
+      <!-- GENERAL OVERVIEW -->
+      <a class="nav-item active" id="nav-dashboard" onclick="switchTab('dashboard')">
+        <span>📊</span> Executive Dashboard
       </a>
-      <a class="nav-item" onclick="switchTab('items')">
-        <span>📦</span> Item Master
+
+      <!-- 1. INVENTORY & PRODUCTION MODULE -->
+      <div class="nav-section-label">
+        <span>📦</span> Inventory &amp; Production
+      </div>
+      <a class="nav-item" id="nav-items" onclick="switchTab('items')">
+        <span>🏷️</span> Item Master
         <span class="nav-badge" id="reorderBadge" style="display: none;">0</span>
       </a>
-      <a class="nav-item" onclick="switchTab('stock')">
-        <span>🔄</span> Stock Register
+      <a class="nav-item" id="nav-stock" onclick="switchTab('stock')">
+        <span>🔄</span> Stock Movement Register
       </a>
-      <a class="nav-item" onclick="switchTab('production')">
-        <span>⚙️</span> Daily Production
+      <a class="nav-item" id="nav-production" onclick="switchTab('production')">
+        <span>⚙️</span> Daily Production Log
       </a>
-      <a class="nav-item" onclick="switchTab('expenses')">
-        <span>💰</span> Daily Expenses
+
+      <!-- 2. HUMAN RESOURCES & WORKFORCE MODULE -->
+      <div class="nav-section-label" id="label-hr">
+        <span>👥</span> Human Resources (HR)
+      </div>
+      <a class="nav-item" id="nav-employees" onclick="switchTab('employees')">
+        <span>👤</span> Employee Directory &amp; Payroll
       </a>
-      <a class="nav-item" onclick="switchTab('employees')">
-        <span>👥</span> Employee Master
+      <a class="nav-item" id="nav-attendance" onclick="switchTab('attendance')">
+        <span>📅</span> Daily Shift Attendance
       </a>
-      <a class="nav-item" onclick="switchTab('attendance')">
-        <span>📅</span> Daily Attendance
+
+      <!-- 3. FINANCE & FACTORY EXPENSES -->
+      <div class="nav-section-label" id="label-finance">
+        <span>💰</span> Finance &amp; Accounts
+      </div>
+      <a class="nav-item" id="nav-expenses" onclick="switchTab('expenses')">
+        <span>🧾</span> Factory Expenses Log
+      </a>
+
+      <!-- 4. SYSTEM & USER MANAGEMENT -->
+      <div class="nav-section-label" id="label-admin">
+        <span>🔐</span> System Security
+      </div>
+      <a class="nav-item" id="nav-users" onclick="switchTab('users')">
+        <span>🛡️</span> User Roles &amp; Permissions
       </a>
     </nav>
 
@@ -575,10 +747,16 @@
         <span>📊</span> Operations &amp; Inventory Dashboard
       </div>
       <div class="topbar-actions">
-        <a href="index.html" class="btn btn-outline">← Back to Website</a>
-        <a href="aaradhya_profile.html" class="btn btn-outline" target="_blank">📄 View Profile PDF</a>
-        <button class="btn btn-outline" onclick="exportToCSV()">📥 Export CSV</button>
+        <div class="user-pill">
+          <div class="user-avatar" id="userAvatar">A</div>
+          <div>
+            <div id="userName" style="font-weight: 700; color: white; line-height: 1.2;">admin</div>
+            <div id="userRoleBadge" style="font-size: 10px; color: var(--accent); font-weight: 700; text-transform: uppercase;">Superuser</div>
+          </div>
+        </div>
+        <button class="btn btn-outline" id="exportBtn" onclick="exportToCSV()">📥 Export CSV</button>
         <button class="btn btn-primary" id="addNewBtn" onclick="openActiveModal()">+ Add New</button>
+        <button class="btn btn-danger" onclick="handleLogout()" title="Logout from Operations">🚪 Logout</button>
       </div>
     </header>
 
@@ -894,6 +1072,40 @@
                 </tr>
               </thead>
               <tbody id="attendanceBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           TAB 8: USER MANAGEMENT
+      =========================================== -->
+      <section id="tab-users" class="tab-section">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">User Accounts &amp; Access Control</div>
+              <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 2px;">
+                Manage operators, plant heads, and directors. Create new login credentials with role-specific access.
+              </div>
+            </div>
+            <div class="card-controls">
+              <button class="btn btn-primary" onclick="openUserModal()">+ Create User</button>
+            </div>
+          </div>
+          <div class="table-container">
+            <table id="usersTable">
+              <thead>
+                <tr>
+                  <th>Username</th>
+                  <th>Full Name</th>
+                  <th>Assigned Role</th>
+                  <th>Permission Level</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="usersBody"></tbody>
             </table>
           </div>
         </div>
@@ -1260,6 +1472,46 @@
     </div>
   </div>
 
+  <!-- Modal: Create User -->
+  <div class="modal-backdrop" id="userModal">
+    <div class="modal">
+      <div class="modal-header">
+        <div class="modal-title">Create User Account</div>
+        <button class="modal-close" onclick="closeModal('userModal')">✕</button>
+      </div>
+      <form id="userForm" onsubmit="saveNewUser(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Username *</label>
+            <input type="text" id="u_username" required placeholder="e.g., rksharma">
+          </div>
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="u_fullname" required placeholder="e.g., R. K. Sharma">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Password *</label>
+              <input type="password" id="u_password" required placeholder="Enter login password">
+            </div>
+            <div class="form-group">
+              <label>Role *</label>
+              <select id="u_role">
+                <option value="STAFF">Staff / Operator (Floor Only)</option>
+                <option value="ADMIN">Admin (Operations &amp; Stock Head)</option>
+                <option value="SUPERUSER">Superuser (Director / All Access)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeModal('userModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create User Account</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Operations Application Logic -->
   <script>
     // Initial Seed State (Synced with Django seed and localStorage for zero-latency)
@@ -1364,13 +1616,14 @@
       if (navEl) navEl.classList.add('active');
 
       const titles = {
-        dashboard: "📊 Operations & Inventory Dashboard",
-        items: "📦 Item Master (Materials & Transformers)",
-        stock: "🔄 Stock Movement Register",
-        production: "⚙️ Daily Production Log",
-        expenses: "💰 Factory & Daily Operational Expenses",
-        employees: "👥 Factory Workforce & Employee Master",
-        attendance: "📅 Daily Attendance & Overtime Tracker"
+        dashboard: "📊 Executive Operations Dashboard",
+        items: "📦 Inventory Dashboard · Item Master",
+        stock: "🔄 Inventory Dashboard · Stock Movements",
+        production: "⚙️ Operations Dashboard · Daily Production",
+        expenses: "💰 Finance Dashboard · Factory Expenses",
+        employees: "👥 HR Dashboard · Employee Master &amp; Payroll",
+        attendance: "📅 HR Dashboard · Shift Attendance",
+        users: "🔐 Security Dashboard · User Roles &amp; Permissions"
       };
       document.getElementById('pageTitle').innerHTML = titles[tabId] || "Operations Management";
 
@@ -1378,6 +1631,9 @@
       const addBtn = document.getElementById('addNewBtn');
       if (tabId === 'dashboard') {
         addBtn.style.display = 'none';
+      } else if (tabId === 'users') {
+        addBtn.style.display = 'inline-flex';
+        addBtn.textContent = '+ Create User';
       } else {
         addBtn.style.display = 'inline-flex';
         addBtn.textContent = '+ Add to ' + tabId.charAt(0).toUpperCase() + tabId.slice(1);
@@ -1391,6 +1647,7 @@
       else if (activeTab === 'expenses') openExpenseModal();
       else if (activeTab === 'employees') openEmployeeModal();
       else if (activeTab === 'attendance') openAttendanceModal();
+      else if (activeTab === 'users') openUserModal();
     }
 
     // Modal Handlers
@@ -1567,6 +1824,7 @@
       renderExpenses();
       renderEmployees();
       renderAttendance();
+      renderUsers();
     }
 
     function renderDashboard() {
@@ -1825,8 +2083,182 @@
       document.body.removeChild(link);
     }
 
+    // Authentication & Role-Based Access Control (RBAC)
+    const AUTH_SESSION_KEY = 'AARADHYA_AUTH_USER_V1';
+    const USERS_STORAGE_KEY = 'AARADHYA_CUSTOM_USERS_V1';
+
+    // Default Seed Roles
+    const DEFAULT_USERS = {
+      'superuser': { pass: 'super123', name: 'Director / Superuser', role: 'SUPERUSER', perms: ['all'] },
+      'admin':     { pass: 'admin123', name: 'Plant Admin',          role: 'ADMIN',     perms: ['all'] },
+      'staff':     { pass: 'staff123', name: 'Floor Operator',        role: 'STAFF',     perms: ['dashboard', 'items', 'stock', 'production', 'attendance'] }
+    };
+
+    function loadUsers() {
+      const stored = localStorage.getItem(USERS_STORAGE_KEY);
+      if (stored) {
+        try { return Object.assign({}, DEFAULT_USERS, JSON.parse(stored)); } catch(e) { console.error(e); }
+      }
+      return Object.assign({}, DEFAULT_USERS);
+    }
+
+    let USERS_DB = loadUsers();
+    let currentUser = null;
+
+    function openUserModal() {
+      document.getElementById('userForm').reset();
+      openModal('userModal');
+    }
+
+    function saveNewUser(e) {
+      e.preventDefault();
+      const u = document.getElementById('u_username').value.trim().toLowerCase();
+      const name = document.getElementById('u_fullname').value.trim();
+      const pass = document.getElementById('u_password').value.trim();
+      const role = document.getElementById('u_role').value;
+
+      USERS_DB[u] = {
+        pass,
+        name,
+        role,
+        perms: role === 'STAFF' ? ['dashboard', 'items', 'stock', 'production', 'attendance'] : ['all']
+      };
+
+      // Persist created user
+      localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(USERS_DB));
+      closeModal('userModal');
+      renderUsers();
+      alert(`User "${u}" created successfully with role ${role}!`);
+    }
+
+    function deleteUser(username) {
+      if (username === 'admin' || username === 'superuser') {
+        alert("Cannot delete primary system administrators.");
+        return;
+      }
+      if (confirm(`Are you sure you want to delete user "${username}"?`)) {
+        delete USERS_DB[username];
+        localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(USERS_DB));
+        renderUsers();
+      }
+    }
+
+    function renderUsers() {
+      const tbody = document.getElementById('usersBody');
+      if (!tbody) return;
+
+      tbody.innerHTML = Object.keys(USERS_DB).map(uname => {
+        const u = USERS_DB[uname];
+        const isCore = (uname === 'admin' || uname === 'superuser');
+        let roleBadge = 'badge-success';
+        if (u.role === 'STAFF') roleBadge = 'badge-info';
+        if (u.role === 'ADMIN') roleBadge = 'badge-warning';
+
+        return `<tr>
+          <td><strong>${uname}</strong></td>
+          <td>${u.name}</td>
+          <td><span class="badge ${roleBadge}">${u.role}</span></td>
+          <td style="color: var(--text-muted); font-size: 11.5px;">${u.role === 'STAFF' ? 'Shop-floor operations only (Financials restricted)' : 'Full System Access &amp; Audit'}</td>
+          <td><span class="badge badge-success">Active</span></td>
+          <td>
+            ${isCore ? '<span style="color: var(--text-muted); font-size: 11px;">System Protected</span>' : `<button class="btn btn-danger" style="padding: 4px 10px; font-size: 11px;" onclick="deleteUser('${uname}')">Delete</button>`}
+          </td>
+        </tr>`;
+      }).join('');
+    }
+
+    function applyRolePermissions() {
+      if (!currentUser) return;
+
+      const userRoleBadge = document.getElementById('userRoleBadge');
+      const userName = document.getElementById('userName');
+      const userAvatar = document.getElementById('userAvatar');
+
+      userName.textContent = currentUser.name;
+      userRoleBadge.textContent = currentUser.role;
+      userAvatar.textContent = currentUser.name.charAt(0);
+
+      const navExpenses = document.getElementById('nav-expenses');
+      const navEmployees = document.getElementById('nav-employees');
+      const navUsers = document.getElementById('nav-users');
+      const labelHr = document.getElementById('label-hr');
+      const labelFinance = document.getElementById('label-finance');
+      const labelAdmin = document.getElementById('label-admin');
+      const exportBtn = document.getElementById('exportBtn');
+
+      if (currentUser.role === 'STAFF') {
+        // Floor Staff: Hide Financial Expenses, Employee Salaries & User Admin
+        if (navExpenses) navExpenses.style.display = 'none';
+        if (navEmployees) navEmployees.style.display = 'none';
+        if (labelFinance) labelFinance.style.display = 'none';
+        if (navUsers) navUsers.style.display = 'none';
+        if (labelAdmin) labelAdmin.style.display = 'none';
+        if (exportBtn) exportBtn.style.display = 'none';
+
+        if (activeTab === 'expenses' || activeTab === 'employees' || activeTab === 'users') {
+          switchTab('production');
+        }
+      } else if (currentUser.role === 'ADMIN') {
+        if (navExpenses) navExpenses.style.display = 'flex';
+        if (navEmployees) navEmployees.style.display = 'flex';
+        if (labelFinance) labelFinance.style.display = 'flex';
+        if (navUsers) navUsers.style.display = 'none'; // Only Superuser can manage users
+        if (labelAdmin) labelAdmin.style.display = 'none';
+        if (exportBtn) exportBtn.style.display = 'inline-flex';
+
+        if (activeTab === 'users') {
+          switchTab('dashboard');
+        }
+      } else {
+        // SUPERUSER has full visibility including User Management
+        if (navExpenses) navExpenses.style.display = 'flex';
+        if (navEmployees) navEmployees.style.display = 'flex';
+        if (labelFinance) labelFinance.style.display = 'flex';
+        if (navUsers) navUsers.style.display = 'flex';
+        if (labelAdmin) labelAdmin.style.display = 'flex';
+        if (exportBtn) exportBtn.style.display = 'inline-flex';
+      }
+    }
+
+    function checkAuth() {
+      const saved = sessionStorage.getItem(AUTH_SESSION_KEY);
+      const overlay = document.getElementById('authOverlay');
+      if (saved && USERS_DB[saved]) {
+        currentUser = USERS_DB[saved];
+        overlay.style.display = 'none';
+        applyRolePermissions();
+      } else {
+        currentUser = null;
+        overlay.style.display = 'flex';
+      }
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const u = document.getElementById('loginUsername').value.trim().toLowerCase();
+      const p = document.getElementById('loginPassword').value.trim();
+      const err = document.getElementById('loginError');
+
+      if (USERS_DB[u] && USERS_DB[u].pass === p) {
+        sessionStorage.setItem(AUTH_SESSION_KEY, u);
+        err.style.display = 'none';
+        checkAuth();
+        renderAll();
+      } else {
+        err.style.display = 'block';
+        err.textContent = 'Invalid username or password. Check role hints below.';
+      }
+    }
+
+    function handleLogout() {
+      sessionStorage.removeItem(AUTH_SESSION_KEY);
+      currentUser = null;
+      checkAuth();
+    }
+
     // Initial render
     window.addEventListener('DOMContentLoaded', () => {
+      checkAuth();
       renderAll();
     });
   </script>
