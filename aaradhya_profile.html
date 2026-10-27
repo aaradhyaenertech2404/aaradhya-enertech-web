@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Profile & Brochure - Aaradhya Enertech</title>
+    <link rel="icon" type="image/x-icon" href="brand-assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0A2540;
+            --primary-light: #12375C;
+            --accent: #00D4B2;
+            --accent-glow: rgba(0, 212, 178, 0.15);
+            --gold: #FFB703;
+            --text-dark: #0F172A;
+            --text-muted: #475569;
+            --text-light: #94A3B8;
+            --bg-light: #F8FAFC;
+            --card-border: #E2E8F0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            background: #0b1120;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-dark);
+            padding: 30px 0 60px 0;
+        }
+
+        /* --- A4 Page Container (210mm x 297mm) --- */
+        .page {
+            width: 210mm;
+            height: 297mm;
+            max-height: 297mm;
+            background: #ffffff;
+            margin: 0 auto 30px auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+            page-break-after: always;
+            page-break-inside: avoid;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media print {
+            body {
+                background: transparent;
+                padding: 0;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                width: 210mm;
+                height: 297mm;
+                page-break-after: always;
+            }
+            .floating-nav {
+                display: none !important;
+            }
+        }
+
+        /* --- Floating Action Bar --- */
+        .floating-nav {
+            position: fixed;
+            top: 24px;
+            right: 28px;
+            z-index: 9999;
+            display: flex;
+            gap: 12px;
+            background: rgba(10, 37, 64, 0.88);
+            backdrop-filter: blur(12px);
+            padding: 10px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, #00D4B2 0%, #0284c7 100%);
+            color: #0A2540;
+        }
+
+        .btn-print:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 212, 178, 0.4);
+        }
+
+        .btn-back {
+            background: rgba(255, 255, 255, 0.12);
+            color: #ffffff;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* --- Universal Page Header & Footer --- */
+        .page-header {
+            height: 64px;
+            padding: 16px 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #F1F5F9;
+            flex-shrink: 0;
+        }
+
+        .header-logo {
+            height: 36px;
+            object-fit: contain;
+        }
+
+        .header-tag {
+            font-family: 'Outfit', sans-serif;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--accent);
+            background: #0A2540;
+            padding: 5px 14px;
+            border-radius: 20px;
+        }
+
+        .page-footer {
+            height: 46px;
+            margin-top: auto;
+            padding: 0 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #E2E8F0;
+            background: #FAFAFA;
+            font-size: 10px;
+            color: var(--text-muted);
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+
+        .page-footer .page-number {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 11px;
+        }
+
+        .page-body {
+            padding: 26px 36px 20px 36px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* --- PAGE 1: COVER PAGE --- */
+        .page-cover {
+            background: radial-gradient(circle at 80% 20%, #173d66 0%, #0A2540 70%, #051324 100%);
+            color: white;
+            padding: 44px 40px 36px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .cover-geometric {
+            position: absolute;
+            right: -80px;
+            top: 130px;
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(0, 212, 178, 0.2) 0%, rgba(2, 132, 199, 0.05) 80%);
+            border: 2px dashed rgba(0, 212, 178, 0.35);
+            pointer-events: none;
+        }
+
+        .cover-top-brand {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .cover-brand-pill {
+            background: rgba(0, 212, 178, 0.15);
+            border: 1px solid rgba(0, 212, 178, 0.4);
+            padding: 6px 14px;
+            border-radius: 30px;
+            color: var(--accent);
+            font-family: 'Outfit', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .cover-hero-content {
+            z-index: 2;
+            margin-top: 15px;
+        }
+
+        .cover-hero-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 42px;
+            line-height: 1.15;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            margin-bottom: 14px;
+        }
+
+        .cover-hero-title span {
+            background: linear-gradient(90deg, #00D4B2 0%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cover-subtitle {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #CBD5E1;
+            max-width: 560px;
+        }
+
+        .cover-visual-banner {
+            width: 100%;
+            height: 340px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 16px 36px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.15);
+            z-index: 2;
+        }
+
+        .cover-visual-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cover-banner-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(10,37,64,0.95) 0%, rgba(10,37,64,0.2) 60%, transparent 100%);
+            display: flex;
+            align-items: flex-end;
+            padding: 22px 26px;
+        }
+
+        .cover-badges-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            width: 100%;
+        }
+
+        .cover-badge-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            padding: 12px 14px;
+            border-radius: 10px;
+            backdrop-filter: blur(8px);
+            text-align: center;
+        }
+
+        .cover-badge-num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .cover-badge-lbl {
+            font-size: 9.5px;
+            color: #94A3B8;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .cover-bottom-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            z-index: 2;
+            font-size: 11px;
+            color: #94A3B8;
+        }
+
+        /* --- SECTION HEADERS --- */
+        .section-header {
+            margin-bottom: 8px;
+        }
+
+        .section-tag {
+            font-family: 'Outfit', sans-serif;
+            font-size: 10.5px;
+            font-weight: 800;
+            color: #0284c7;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.25;
+        }
+
+        .section-intro {
+            font-size: 12px;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* --- CARDS & GRID LAYOUTS --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .feature-card {
+            background: #FFFFFF;
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 16px 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        .feature-card.highlight {
+            border-left: 4px solid var(--accent);
+            background: #F0FDFA;
+        }
+
+        .feature-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .feature-desc {
+            font-size: 11px;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        /* --- PRODUCT SHOWCASE STYLES (PAGE 3 & 4) --- */
+        .product-card {
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-img-box {
+            height: 185px;
+            background: #f1f5f9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-tag-pill {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(10, 37, 64, 0.88);
+            color: #00D4B2;
+            font-family: 'Outfit', sans-serif;
+            font-size: 9.5px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+        }
+
+        .product-body {
+            padding: 16px 18px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 14.5px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .product-specs {
+            margin-top: 10px;
+            background: #F8FAFC;
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 10.5px;
+            line-height: 1.55;
+            color: var(--text-dark);
+            border: 1px solid #EEF2F6;
+        }
+
+        .product-specs div {
+            display: flex;
+            justify-content: space-between;
+            padding: 3.5px 0;
+            border-bottom: 1px dashed #E2E8F0;
+        }
+
+        .product-specs div:last-child {
+            border-bottom: none;
+        }
+
+        .product-specs span:first-child {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .product-specs span:last-child {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* --- PROCESS TIMELINE (PAGE 5) --- */
+        .process-step-card {
+            background: white;
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .process-img-box {
+            height: 135px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .process-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .step-number {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: var(--primary);
+            color: var(--accent);
+            font-family: 'Outfit', sans-serif;
+            font-size: 10.5px;
+            font-weight: 800;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+
+        .process-info {
+            padding: 12px 14px;
+        }
+
+        .process-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .process-desc {
+            font-size: 9.5px;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        /* --- CONTACT & BACK COVER (PAGE 6) --- */
+        .back-cover-header {
+            background: #0A2540;
+            color: white;
+            border-radius: 16px;
+            padding: 26px 30px;
+        }
+
+        .back-contact-card {
+            background: #F8FAFC;
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 22px 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon-bubble {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(0, 212, 178, 0.15);
+            color: #0284c7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .contact-label {
+            font-size: 10.5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 3px;
+        }
+
+        .contact-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .qr-section {
+            background: linear-gradient(135deg, #0A2540 0%, #1e3a8a 100%);
+            border-radius: 16px;
+            padding: 24px 28px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10.5px;
+            margin-top: 10px;
+        }
+
+        .table-custom th {
+            background: #0A2540;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            padding: 10px 12px;
+            text-align: left;
+        }
+
+        .table-custom td {
+            padding: 9px 12px;
+            border-bottom: 1px solid #E2E8F0;
+            color: var(--text-dark);
+        }
+
+        .table-custom tr:nth-child(even) td {
+            background: #F8FAFC;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Navigation / Print Helper -->
+    <div class="floating-nav no-print">
+        <a href="index.html" class="btn-action btn-back">← Back to Website</a>
+        <button onclick="window.print()" class="btn-action btn-print">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/><path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/></svg>
+            Print / Save PDF
+        </button>
+    </div>
+
+    <!-- ==========================================
+         PAGE 1: COVER PAGE
+    =========================================== -->
+    <div class="page page-cover">
+        <div class="cover-geometric"></div>
+
+        <div class="cover-top-brand">
+            <img src="brand-assets/logo-full-dark.png" alt="Aaradhya Enertech Logo" style="height: 50px;">
+            <div class="cover-brand-pill">Corporate Profile 2026-27</div>
+        </div>
+
+        <div class="cover-hero-content">
+            <div style="color: var(--accent); font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;">
+                Engineering India's Power Infrastructure
+            </div>
+            <h1 class="cover-hero-title">
+                Next-Generation Transformers &amp; <span>Electrical Power Systems</span>
+            </h1>
+            <p class="cover-subtitle">
+                A pioneer in high-reliability power and distribution transformers up to 33kV class, engineered with IS 1180, BEE Star, and IEC compliance for heavy utilities, renewable energy, and industrial infrastructures.
+            </p>
+        </div>
+
+        <div class="cover-visual-banner">
+            <img src="images/factory-plant.jpg" alt="Aaradhya Enertech Manufacturing Facility">
+            <div class="cover-banner-overlay">
+                <div class="cover-badges-grid">
+                    <div class="cover-badge-card">
+                        <div class="cover-badge-num">16+</div>
+                        <div class="cover-badge-lbl">Years Excellence</div>
+                    </div>
+                    <div class="cover-badge-card">
+                        <div class="cover-badge-num">10,000+</div>
+                        <div class="cover-badge-lbl">Installations</div>
+                    </div>
+                    <div class="cover-badge-card">
+                        <div class="cover-badge-num">IS 1180</div>
+                        <div class="cover-badge-lbl">BIS Certified</div>
+                    </div>
+                    <div class="cover-badge-card">
+                        <div class="cover-badge-num">33 kV</div>
+                        <div class="cover-badge-lbl">Class Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cover-bottom-bar">
+            <div>
+                <strong style="color: white; display: block; font-size: 13px;">Aaradhya Enertech Private Limited</strong>
+                F-106, RIICO Industrial Area, Bindayaka, Sirsi Road, Jaipur - 302012 (Rajasthan)
+            </div>
+            <div style="text-align: right;">
+                <span style="color: var(--accent); font-weight: 700;">www.aaradhyaenertech.com</span><br>
+                Tel: +91-7976422576
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ==========================================
+         PAGE 2: ABOUT US & LEADERSHIP VISION
+    =========================================== -->
+    <div class="page">
+        <div class="page-header">
+            <img src="brand-assets/logo-full-light.png" alt="Aaradhya Logo" class="header-logo">
+            <div class="header-tag">Company Background &amp; Philosophy</div>
+        </div>
+
+        <div class="page-body">
+            <div class="section-header">
+                <span class="section-tag">About Aaradhya Enertech</span>
+                <h2 class="section-title">Powering Progress with Precision Engineering</h2>
+                <p class="section-intro">
+                    With over a decade and a half of manufacturing leadership, Aaradhya Enertech is recognized as one of Western India's premier transformer manufacturers, driving reliable energy distribution across government DISCOMs, EPC projects, and global industrial parks.
+                </p>
+            </div>
+
+            <div class="grid-2">
+                <div class="feature-card highlight">
+                    <div class="feature-title">🎯 Our Vision</div>
+                    <p class="feature-desc">
+                        To be India's most trusted innovator in smart power transformation, reducing transmission losses and facilitating carbon-neutral energy integration through state-of-the-art electromagnetic design.
+                    </p>
+                </div>
+                <div class="feature-card highlight" style="border-left-color: #0284c7; background: #F0F9FF;">
+                    <div class="feature-title">⚙️ Our Mission</div>
+                    <p class="feature-desc">
+                        Manufacture zero-defect, BIS-certified, and BEE Star energy-rated distribution equipment backed by rigorous lifetime thermal endurance testing and round-the-clock field service support.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Leadership & Plant Showcase -->
+            <div style="background: #F8FAFC; border: 1px solid var(--card-border); border-radius: 14px; padding: 22px 26px; border-left: 5px solid var(--primary); position: relative;">
+                <div style="font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800; color: var(--primary);">
+                    Director's Message
+                </div>
+                <div style="font-size: 12px; color: #0284c7; font-weight: 700; margin-bottom: 8px;">
+                    Engineering Excellence &amp; Sustainable Reliability
+                </div>
+                <p style="font-size: 11.5px; color: var(--text-muted); line-height: 1.65; margin: 0; font-style: italic;">
+                    "Power delivery is the foundational heartbeat of modern industrialization. Every unit passing our factory threshold undergoes uncompromising quality assurance, strict CRGO core balancing, and high-dielectric validation to guarantee uninterrupted performance in the harshest field environments."
+                </p>
+                <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
+                    <div style="font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 800; color: var(--primary); text-transform: uppercase; letter-spacing: 0.5px;">
+                        — Board of Directors, <span style="color: var(--accent);">Aaradhya Enertech</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Value Pillars -->
+            <div>
+                <div style="font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">
+                    Core Pillars of Aaradhya Quality
+                </div>
+                <div class="grid-3">
+                    <div class="feature-card">
+                        <div class="feature-title">⚡ High Energy Efficiency</div>
+                        <div class="feature-desc">Low no-load losses with prime-grade, cold-rolled grain-oriented (CRGO) steel cores.</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">🛡️ Robust Thermal Design</div>
+                        <div class="feature-desc">Engineered for 50°C ambient temperatures with ONAN natural cooling and radiator fins.</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">📜 BIS &amp; BEE Certified</div>
+                        <div class="feature-desc">Fully tested and certified under IS 1180 (Part 1): 2014 Level-1, Level-2 &amp; Star 1-3 ratings.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="border-radius: 14px; overflow: hidden; height: 210px; box-shadow: 0 4px 14px rgba(0,0,0,0.06);">
+                <img src="images/manufacturing.png" alt="Manufacturing bay" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Aaradhya Enertech Pvt. Ltd. · Company Overview</span>
+            <span class="page-number">02</span>
+        </div>
+    </div>
+
+
+    <!-- ==========================================
+         PAGE 3: DISTRIBUTION TRANSFORMERS
+    =========================================== -->
+    <div class="page">
+        <div class="page-header">
+            <img src="brand-assets/logo-full-light.png" alt="Aaradhya Logo" class="header-logo">
+            <div class="header-tag">Core Product Catalog · Section 01</div>
+        </div>
+
+        <div class="page-body">
+            <div class="section-header">
+                <span class="section-tag">Product Lineup</span>
+                <h2 class="section-title">Distribution Transformers (Oil-Cooled)</h2>
+                <p class="section-intro">
+                    Designed for utility electricity boards, rural electrification, commercial townships, and heavy industrial feeder lines. Fully customizable to municipal standards.
+                </p>
+            </div>
+
+            <div class="grid-2">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-img-box">
+                        <img src="images/transformer.png" alt="Distribution Transformer">
+                        <div class="product-tag-pill">IS 1180 Level 2 / 3</div>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-name">Standard Oil-Cooled Distribution Transformer</div>
+                        <p style="font-size: 10.5px; color: var(--text-muted); line-height: 1.45;">
+                            Precision wound with high-conductivity electrolytic copper or EC grade aluminum conductors.
+                        </p>
+                        <div class="product-specs">
+                            <div><span>Capacity Range:</span> <span>16 kVA to 2,500 kVA</span></div>
+                            <div><span>Primary Voltage:</span> <span>11 kV / 22 kV / 33 kV</span></div>
+                            <div><span>Secondary Voltage:</span> <span>415V / 433V</span></div>
+                            <div><span>Cooling Method:</span> <span>ONAN (Oil Natural Air Natural)</span></div>
+                            <div><span>Vector Group:</span> <span>Dyn11 (Standard)</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-img-box">
+                        <img src="images/hero-transformer.jpg" alt="Industrial Transformer">
+                        <div class="product-tag-pill">Heavy Duty Industrial</div>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-name">Substation Step-Down Power Transformer</div>
+                        <p style="font-size: 10.5px; color: var(--text-muted); line-height: 1.45;">
+                            Heavy tank construction with explosion vent, Buchholz relay, and silica gel dehydrating breathers.
+                        </p>
+                        <div class="product-specs">
+                            <div><span>Capacity Range:</span> <span>500 kVA to 5,000 kVA</span></div>
+                            <div><span>Voltage Class:</span> <span>Up to 33 kV Class</span></div>
+                            <div><span>Tapping Options:</span> <span>Off-Circuit Tap Changer / OLTC</span></div>
+                            <div><span>Core Material:</span> <span>High Permeability CRGO Steel</span></div>
+                            <div><span>Standard:</span> <span>IS 2026 / IEC 60076</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Specifications Table -->
+            <div>
+                <div style="font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 800; color: var(--primary); margin-bottom: 6px;">
+                    Standard Technical Ratings &amp; Compliance Matrix
+                </div>
+                <table class="table-custom">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>100 kVA</th>
+                            <th>250 kVA</th>
+                            <th>500 kVA</th>
+                            <th>1000 kVA</th>
+                            <th>2000 kVA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Voltage Ratio</strong></td>
+                            <td>11kV / 433V</td>
+                            <td>11kV / 433V</td>
+                            <td>11kV / 433V</td>
+                            <td>11kV / 433V</td>
+                            <td>33kV / 433V</td>
+                        </tr>
+                        <tr>
+                            <td><strong>No Load Losses (W)</strong></td>
+                            <td>Max 220</td>
+                            <td>Max 430</td>
+                            <td>Max 750</td>
+                            <td>Max 1250</td>
+                            <td>Max 2100</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Full Load Losses @ 75°C</strong></td>
+                            <td>1310 W</td>
+                            <td>2700 W</td>
+                            <td>4600 W</td>
+                            <td>8800 W</td>
+                            <td>16500 W</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Efficiency @ 100% Load</strong></td>
+                            <td>98.49%</td>
+                            <td>98.76%</td>
+                            <td>98.94%</td>
+                            <td>99.00%</td>
+                            <td>99.08%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Standard Impedance</strong></td>
+                            <td>4.5%</td>
+                            <td>4.5%</td>
+                            <td>5.0%</td>
+                            <td>5.0%</td>
+                            <td>5.75%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Aaradhya Enertech Pvt. Ltd. · Product Line: Distribution Transformers</span>
+            <span class="page-number">03</span>
+        </div>
+    </div>
+
+
+    <!-- ==========================================
+         PAGE 4: SPECIALIZED & DRY-TYPE TRANSFORMERS
+    =========================================== -->
+    <div class="page">
+        <div class="page-header">
+            <img src="brand-assets/logo-full-light.png" alt="Aaradhya Logo" class="header-logo">
+            <div class="header-tag">Core Product Catalog · Section 02</div>
+        </div>
+
+        <div class="page-body">
+            <div class="section-header">
+                <span class="section-tag">Specialized Solutions</span>
+                <h2 class="section-title">Dry-Type (Cast Resin) &amp; Solar Inverter Transformers</h2>
+                <p class="section-intro">
+                    Fire-safe, maintenance-free, and eco-friendly transformers engineered for indoor installations, hospitals, high-rise complexes, and commercial solar energy farms.
+                </p>
+            </div>
+
+            <div class="grid-2">
+                <!-- Cast Resin Transformer -->
+                <div class="product-card">
+                    <div class="product-img-box">
+                        <img src="images/cast_resin.png" alt="Cast Resin Dry Type Transformer">
+                        <div class="product-tag-pill" style="background: #0369a1;">Cast Resin · Class F / H</div>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-name">Cast Resin Dry Type (CRT) Transformers</div>
+                        <p style="font-size: 10.5px; color: var(--text-muted); line-height: 1.45;">
+                            Encapsulated under vacuum in epoxy resin. Zero fire hazard, no toxic gas emissions, and non-polluting for occupied spaces.
+                        </p>
+                        <div class="product-specs">
+                            <div><span>Rating:</span> <span>100 kVA to 3,150 kVA</span></div>
+                            <div><span>Insulation Class:</span> <span>Class 'F' (155°C) or 'H' (180°C)</span></div>
+                            <div><span>Enclosure Protection:</span> <span>IP21 / IP23 / IP31 / IP44</span></div>
+                            <div><span>Applications:</span> <span>Malls, IT Parks, Metro Stations</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solar & Renewable Inverter Duty -->
+                <div class="product-card">
+                    <div class="product-img-box">
+                        <img src="images/solar_panel.png" alt="Solar Inverter Duty Transformer">
+                        <div class="product-tag-pill" style="background: #059669;">Solar PV · Multi-Winding</div>
+                    </div>
+                    <div class="product-body">
+                        <div class="product-name">Solar Inverter Duty Transformers</div>
+                        <p style="font-size: 10.5px; color: var(--text-muted); line-height: 1.45;">
+                            Designed specifically to tolerate higher harmonics, pulsed voltages, and multi-inverter parallel operation without thermal hotspots.
+                        </p>
+                        <div class="product-specs">
+                            <div><span>Rating:</span> <span>500 kVA to 5,000 kVA</span></div>
+                            <div><span>Winding Config:</span> <span>Dual / Multi Secondary LV</span></div>
+                            <div><span>Harmonic Factor:</span> <span>K-Factor rated (K-4 to K-13)</span></div>
+                            <div><span>Applications:</span> <span>Utility Scale Solar &amp; Wind Farms</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compact Substation / Switchgear Systems -->
+            <div style="background: #F8FAFC; border: 1px solid var(--card-border); border-radius: 14px; padding: 18px 20px; display: flex; gap: 20px; align-items: center;">
+                <div style="width: 170px; height: 130px; border-radius: 10px; overflow: hidden; flex-shrink: 0;">
+                    <img src="images/panel.png" alt="LT Switchgear & Panels" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div>
+                    <div style="font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 800; color: var(--primary);">
+                        Integrated Compact Substations (CSS) &amp; LT Panels
+                    </div>
+                    <p style="font-size: 11px; color: var(--text-muted); line-height: 1.6; margin: 6px 0 10px 0;">
+                        Engineered plug-and-play substation enclosures housing HT vacuum circuit breakers (VCB), dry or oil transformers, and customized LT distribution panels with motorized metering.
+                    </p>
+                    <div style="font-size: 11px; font-weight: 700; color: #0284c7;">
+                        ✓ IP54 Outdoor Protection · ✓ Arc Fault Tested Enclosures · ✓ SCADA Compatible
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Aaradhya Enertech Pvt. Ltd. · Specialized &amp; Renewable Solutions</span>
+            <span class="page-number">04</span>
+        </div>
+    </div>
+
+
+    <!-- ==========================================
+         PAGE 5: MANUFACTURING & QUALITY TESTING
+    =========================================== -->
+    <div class="page">
+        <div class="page-header">
+            <img src="brand-assets/logo-full-light.png" alt="Aaradhya Logo" class="header-logo">
+            <div class="header-tag">Factory Infrastructure &amp; Quality Control</div>
+        </div>
+
+        <div class="page-body">
+            <div class="section-header">
+                <span class="section-tag">Manufacturing Process</span>
+                <h2 class="section-title">Zero-Defect Production &amp; Testing Facility</h2>
+                <p class="section-intro">
+                    Our Bindayaka, Jaipur manufacturing complex integrates high-precision core cutting, computer-controlled coil winding, vacuum drying ovens, and an in-house computerized testing laboratory.
+                </p>
+            </div>
+
+            <!-- 6-Stage Process Flow -->
+            <div class="grid-3" style="gap: 14px;">
+                <div class="process-step-card">
+                    <div class="process-img-box">
+                        <img src="images/core_assembly.png" alt="Core Assembly">
+                        <div class="step-number">01</div>
+                    </div>
+                    <div class="process-info">
+                        <div class="process-title">CRGO Core Stacking</div>
+                        <div class="process-desc">Step-lap mitered core joints minimize magnetizing currents and harmonic vibration.</div>
+                    </div>
+                </div>
+
+                <div class="process-step-card">
+                    <div class="process-img-box">
+                        <img src="images/coil_winding.png" alt="Coil Winding">
+                        <div class="step-number">02</div>
+                    </div>
+                    <div class="process-info">
+                        <div class="process-title">Precision Winding</div>
+                        <div class="process-desc">Continuous disc and helical copper coils wound with Nomex / Kraft paper insulation.</div>
+                    </div>
+                </div>
+
+                <div class="process-step-card">
+                    <div class="process-img-box">
+                        <img src="images/core_coil_assembly.png" alt="Assembly">
+                        <div class="step-number">03</div>
+                    </div>
+                    <div class="process-info">
+                        <div class="process-title">Core-Coil Assembly</div>
+                        <div class="process-desc">Rigid clamping prevents movement during short circuits and mechanical shocks.</div>
+                    </div>
+                </div>
+
+                <div class="process-step-card">
+                    <div class="process-img-box">
+                        <img src="images/ovening.png" alt="Vacuum Drying">
+                        <div class="step-number">04</div>
+                    </div>
+                    <div class="process-info">
+                        <div class="process-title">Vacuum Oven Drying</div>
+                        <div class="process-desc">Moisture extracted under high thermal vacuum before immediate oil filling.</div>
+                    </div>
+                </div>
+
+                <div class="process-step-card">
+                    <div class="process-img-box">
+                        <img src="images/tanking.png" alt="Tanking & Painting">
+                        <div class="step-number">05</div>
+                    </div>
+                    <div class="process-info">
+                        <div class="process-title">Tanking &amp; Polyurethane Coat</div>
+                        <div class="process-desc">Shot-blasted MS steel tanks with corrosion-resistant epoxy primers and topcoats.</div>
+                    </div>
+                </div>
+
+                <div class="process-step-card">
+                    <div class="process-img-box">
+                        <img src="images/testing_panel.png" alt="Testing Lab">
+                        <div class="step-number">06</div>
+                    </div>
+                    <div class="process-info">
+                        <div class="process-title">Routine &amp; Type Testing</div>
+                        <div class="process-desc">100% routine tests as per IS/IEC standards prior to factory dispatch release.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testing Standard Bar -->
+            <div style="background: #F1F5F9; border-radius: 12px; padding: 16px 20px; border: 1px solid #E2E8F0;">
+                <div style="font-family: 'Outfit', sans-serif; font-size: 13.5px; font-weight: 800; color: var(--primary); margin-bottom: 8px;">
+                    Comprehensive Test Routine Conducted In-House:
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; font-size: 11px; color: var(--text-muted); gap: 8px;">
+                    <div>• Measurement of Winding Resistance &amp; Turns Ratio</div>
+                    <div>• Measurement of No-Load Loss and Current</div>
+                    <div>• Separate Source AC Withstand Voltage Test</div>
+                    <div>• Induced Over-Voltage Withstand Test (DVDF)</div>
+                    <div>• Oil Breakdown Dielectric Test (BDV &gt; 60 kV)</div>
+                    <div>• Short Circuit &amp; Temperature Rise Verified (NABL labs)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Aaradhya Enertech Pvt. Ltd. · Quality Assurance &amp; Manufacturing</span>
+            <span class="page-number">05</span>
+        </div>
+    </div>
+
+
+    <!-- ==========================================
+         PAGE 6: TYPE TESTS & CERTIFICATES (SG_PROFILE_V2 STYLE COLLAGE)
+    =========================================== -->
+    <div class="page" style="background-color: white;">
+        <div class="page-header">
+            <img src="brand-assets/logo-full-light.png" alt="Aaradhya Logo" class="header-logo">
+            <div class="header-tag">Government Approvals &amp; Certifications</div>
+        </div>
+
+        <div class="page-body" style="padding: 24px 30px 16px 30px; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+            <div style="text-align: center; margin-bottom: 10px;">
+                <span class="section-tag">Quality Accreditations</span>
+                <h2 style="font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 800; color: var(--primary); margin: 0;">
+                    Type Tests &amp; Official Certifications
+                </h2>
+                <p style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px;">
+                    Tested and certified by NABL accredited testing laboratories, BIS, and state regulatory bodies
+                </p>
+            </div>
+
+            <!-- Authentic SG_PROFILE_V2 Multi-Certificate Collage Layout -->
+            <div style="width: 100%; display: flex; flex-direction: column; gap: 14px; align-items: center; justify-content: center;">
+                
+                <!-- Top Row: 2 Certificates -->
+                <div style="display: flex; justify-content: center; gap: 32px; width: 100%;">
+                    <div style="border: 3.5px solid #0A2540; background: white; display: flex; justify-content: center; align-items: center; padding: 6px; box-shadow: 0 8px 18px rgba(0,0,0,0.12); width: 200px; height: 230px; border-radius: 6px; transform: rotate(-2deg);">
+                        <img src="images/certificate_1.jpg" alt="ERTO Test Report" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    </div>
+                    <div style="border: 3.5px solid #0A2540; background: white; display: flex; justify-content: center; align-items: center; padding: 6px; box-shadow: 0 8px 18px rgba(0,0,0,0.12); width: 200px; height: 230px; border-radius: 6px; transform: rotate(2deg);">
+                        <img src="images/certificate_2.jpg" alt="Contractor License" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    </div>
+                </div>
+
+                <!-- Middle Row: 1 Certificate - Aaradhya Official Emblem - 1 Certificate -->
+                <div style="display: flex; justify-content: center; align-items: center; gap: 24px; width: 100%;">
+                    <div style="border: 3.5px solid #0A2540; background: white; display: flex; justify-content: center; align-items: center; padding: 6px; box-shadow: 0 8px 18px rgba(0,0,0,0.12); width: 200px; height: 230px; border-radius: 6px; transform: rotate(-3deg);">
+                        <img src="images/certificate_3.png" alt="Trade Marks Registry" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    </div>
+                    
+                    <!-- CENTER: Aaradhya Enertech Official Emblem Card -->
+                    <div style="border: 2px solid #00D4B2; background: radial-gradient(circle, #ffffff 60%, #F0FDFA 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 18px; box-shadow: 0 12px 28px rgba(10,37,64,0.15); z-index: 10; width: 215px; height: 215px; border-radius: 16px;">
+                        <img src="brand-assets/logo-full-light.png" alt="Aaradhya Logo" style="max-width: 100%; height: auto; max-height: 75px; object-fit: contain;">
+                        <div style="font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 800; color: #0A2540; margin-top: 10px; letter-spacing: 0.5px; text-align: center;">
+                            GOVT. APPROVED &amp; BIS CERTIFIED
+                        </div>
+                        <div style="font-size: 9px; color: #0284c7; font-weight: 700; margin-top: 2px;">
+                            IS 1180 : 2014 COMPLIANT
+                        </div>
+                    </div>
+
+                    <div style="border: 3.5px solid #0A2540; background: white; display: flex; justify-content: center; align-items: center; padding: 6px; box-shadow: 0 8px 18px rgba(0,0,0,0.12); width: 200px; height: 230px; border-radius: 6px; transform: rotate(3deg);">
+                        <img src="images/certificate_4.png" alt="BIS Certificate" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    </div>
+                </div>
+
+                <!-- Bottom Row: 2 Certificates -->
+                <div style="display: flex; justify-content: center; gap: 32px; width: 100%;">
+                    <div style="border: 3.5px solid #0A2540; background: white; display: flex; justify-content: center; align-items: center; padding: 6px; box-shadow: 0 8px 18px rgba(0,0,0,0.12); width: 200px; height: 230px; border-radius: 6px; transform: rotate(1deg);">
+                        <img src="images/certificate_5.png" alt="BIS Attachment" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    </div>
+                    <div style="border: 3.5px solid #0A2540; background: white; display: flex; justify-content: center; align-items: center; padding: 6px; box-shadow: 0 8px 18px rgba(0,0,0,0.12); width: 200px; height: 230px; border-radius: 6px; transform: rotate(-1deg);">
+                        <img src="images/certificate_6.png" alt="Calibration Equipments" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="page-footer">
+            <span>Aaradhya Enertech Pvt. Ltd. · Type Tests &amp; Certificates</span>
+            <span class="page-number">06</span>
+        </div>
+    </div>
+
+
+    <!-- ==========================================
+         PAGE 7: BACK COVER & CORPORATE INQUIRIES
+    =========================================== -->
+    <div class="page" style="background: radial-gradient(circle at 80% 20%, #173d66 0%, #0A2540 70%, #051324 100%); color: white;">
+        <div class="page-header" style="border-bottom: 1px solid rgba(255,255,255,0.15); background: transparent;">
+            <img src="brand-assets/logo-full-dark.png" alt="Aaradhya Logo" class="header-logo">
+            <div class="header-tag" style="background: rgba(0, 212, 178, 0.15); border: 1px solid rgba(0, 212, 178, 0.35); color: var(--accent);">
+                Global Inquiries &amp; Works
+            </div>
+        </div>
+
+        <div class="page-body" style="padding: 30px 40px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+                <div style="color: var(--accent); font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">
+                    Empowering Electrical Infrastructure
+                </div>
+                <h2 style="font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 900; margin: 8px 0 14px 0; line-height: 1.2;">
+                    Partnering for Reliable Energy Distribution
+                </h2>
+                <p style="font-size: 13px; color: #CBD5E1; line-height: 1.6; max-width: 600px;">
+                    Whether standard distribution units, customized inverter duty systems for utility solar, or high-safety cast resin installations, our engineering team ensures optimal lifecycle efficiency.
+                </p>
+            </div>
+
+            <!-- Back Cover Image Showcase -->
+            <div style="border-radius: 14px; overflow: hidden; height: 210px; border: 1px solid rgba(255,255,255,0.18); box-shadow: 0 14px 30px rgba(0,0,0,0.4);">
+                <img src="images/factory-plant.jpg" alt="Aaradhya Enertech Plant" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+
+            <!-- Contact Information Box -->
+            <div style="background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 14px; padding: 22px 26px; backdrop-filter: blur(10px);">
+                <div class="contact-item">
+                    <div class="contact-icon-bubble" style="background: rgba(0, 212, 178, 0.2); color: var(--accent);">📍</div>
+                    <div>
+                        <div class="contact-label" style="color: #94A3B8;">Manufacturing Works &amp; Registered Office</div>
+                        <div class="contact-value" style="font-size: 13px; color: white;">
+                            Aaradhya Enertech Private Limited<br>
+                            F-106, RIICO Industrial Area, Bindayaka, Sirsi Road, Jaipur - 302012 (Rajasthan), India
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon-bubble" style="background: rgba(0, 212, 178, 0.2); color: var(--accent);">📞</div>
+                    <div>
+                        <div class="contact-label" style="color: #94A3B8;">Direct Sales &amp; Technical Desk</div>
+                        <div class="contact-value" style="color: white; font-size: 14px;">
+                            +91-7976422576 &nbsp;|&nbsp; +91-9414051052
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon-bubble" style="background: rgba(0, 212, 178, 0.2); color: var(--accent);">✉️</div>
+                    <div>
+                        <div class="contact-label" style="color: #94A3B8;">Official Email Inquiries</div>
+                        <div class="contact-value" style="color: var(--accent); font-size: 13.5px;">
+                            info@aaradhyaenertech.com &nbsp;·&nbsp; sales@aaradhyaenertech.com
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Digital QR & Web Verification -->
+            <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between;">
+                <div>
+                    <div style="font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 800; color: white;">
+                        www.aaradhyaenertech.com
+                    </div>
+                    <div style="font-size: 11px; color: #94A3B8; margin-top: 3px;">
+                        Explore our full interactive product catalog &amp; instant RFP estimates online.
+                    </div>
+                </div>
+                <div style="background: white; padding: 6px; border-radius: 10px; text-align: center;">
+                    <img src="brand-assets/favicon-512x512.png" alt="QR Link" style="width: 58px; height: 58px; object-fit: contain;">
+                    <div style="font-size: 8px; font-weight: 800; color: #0A2540; margin-top: 2px;">SCAN / VISIT</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer" style="background: rgba(0,0,0,0.25); border-top: 1px solid rgba(255,255,255,0.1); color: #94A3B8;">
+            <span>© 2026 Aaradhya Enertech Pvt. Ltd. · All Rights Reserved</span>
+            <span class="page-number" style="color: var(--accent);">07</span>
+        </div>
+    </div>
+
+</body>
+</html>
