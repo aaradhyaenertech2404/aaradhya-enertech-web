@@ -235,6 +235,46 @@
       color: white;
     }
 
+    .btn-action-edit {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      padding: 4px 8px;
+      font-size: 11px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .btn-action-edit:hover {
+      background: #2563eb;
+      color: #ffffff;
+    }
+    .btn-action-delete {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      padding: 4px 8px;
+      font-size: 11px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .btn-action-delete:hover {
+      background: var(--danger);
+      color: #ffffff;
+    }
+    .actions-cell {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: flex-end;
+      white-space: nowrap;
+    }
+
     /* --- LOGIN OVERLAY --- */
     #authOverlay {
       position: fixed;
@@ -873,6 +913,7 @@
                   <th>Reorder Level</th>
                   <th>Storage Bay</th>
                   <th>Status</th>
+                  <th style="text-align: right;">Actions</th>
                 </tr>
               </thead>
               <tbody id="itemsBody"></tbody>
@@ -913,6 +954,7 @@
                   <th>Unit Rate (₹)</th>
                   <th>Movement Value (₹)</th>
                   <th>Remarks</th>
+                  <th style="text-align: right;">Actions</th>
                 </tr>
               </thead>
               <tbody id="stockBody"></tbody>
@@ -954,6 +996,7 @@
                   <th>Unit</th>
                   <th>Supervisor</th>
                   <th>Remarks</th>
+                  <th style="text-align: right;">Actions</th>
                 </tr>
               </thead>
               <tbody id="productionBody"></tbody>
@@ -992,6 +1035,7 @@
                   <th>Amount (₹)</th>
                   <th>Approved By</th>
                   <th>Remarks</th>
+                  <th style="text-align: right;">Actions</th>
                 </tr>
               </thead>
               <tbody id="expensesBody"></tbody>
@@ -1030,6 +1074,7 @@
                   <th>Phone Number</th>
                   <th>Monthly Salary (₹)</th>
                   <th>Status</th>
+                  <th style="text-align: right;">Actions</th>
                 </tr>
               </thead>
               <tbody id="employeesBody"></tbody>
@@ -1070,6 +1115,7 @@
                   <th>Hours</th>
                   <th>Overtime (Hrs)</th>
                   <th>Remarks</th>
+                  <th style="text-align: right;">Actions</th>
                 </tr>
               </thead>
               <tbody id="attendanceBody"></tbody>
@@ -1124,10 +1170,11 @@
   <div class="modal-backdrop" id="itemModal">
     <div class="modal">
       <div class="modal-header">
-        <div class="modal-title">Add Item Master / Material</div>
+        <div class="modal-title" id="itemModalTitle">Add Item Master / Material</div>
         <button class="modal-close" onclick="closeModal('itemModal')">✕</button>
       </div>
       <form id="itemForm" onsubmit="saveItem(event)">
+        <input type="hidden" id="m_edit_id">
         <div class="modal-body">
           <div class="form-row">
             <div class="form-group">
@@ -1176,7 +1223,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline" onclick="closeModal('itemModal')">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save Material</button>
+          <button type="submit" class="btn btn-primary" id="itemModalSubmit">Save Material</button>
         </div>
       </form>
     </div>
@@ -1186,10 +1233,11 @@
   <div class="modal-backdrop" id="stockModal">
     <div class="modal">
       <div class="modal-header">
-        <div class="modal-title">Record Stock Movement</div>
+        <div class="modal-title" id="stockModalTitle">Record Stock Movement</div>
         <button class="modal-close" onclick="closeModal('stockModal')">✕</button>
       </div>
       <form id="stockForm" onsubmit="saveStock(event)">
+        <input type="hidden" id="s_edit_id">
         <div class="modal-body">
           <div class="form-row">
             <div class="form-group">
@@ -1239,7 +1287,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline" onclick="closeModal('stockModal')">Cancel</button>
-          <button type="submit" class="btn btn-primary">Record Movement</button>
+          <button type="submit" class="btn btn-primary" id="stockModalSubmit">Record Movement</button>
         </div>
       </form>
     </div>
@@ -1249,10 +1297,11 @@
   <div class="modal-backdrop" id="productionModal">
     <div class="modal">
       <div class="modal-header">
-        <div class="modal-title">Log Daily Production</div>
+        <div class="modal-title" id="prodModalTitle">Log Daily Production</div>
         <button class="modal-close" onclick="closeModal('productionModal')">✕</button>
       </div>
       <form id="productionForm" onsubmit="saveProduction(event)">
+        <input type="hidden" id="p_edit_id">
         <div class="modal-body">
           <div class="form-row">
             <div class="form-group">
@@ -1300,7 +1349,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline" onclick="closeModal('productionModal')">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save Production</button>
+          <button type="submit" class="btn btn-primary" id="prodModalSubmit">Save Production</button>
         </div>
       </form>
     </div>
@@ -1310,10 +1359,11 @@
   <div class="modal-backdrop" id="expenseModal">
     <div class="modal">
       <div class="modal-header">
-        <div class="modal-title">Record Daily Expense</div>
+        <div class="modal-title" id="expModalTitle">Record Daily Expense</div>
         <button class="modal-close" onclick="closeModal('expenseModal')">✕</button>
       </div>
       <form id="expenseForm" onsubmit="saveExpense(event)">
+        <input type="hidden" id="e_edit_id">
         <div class="modal-body">
           <div class="form-row">
             <div class="form-group">
@@ -1365,7 +1415,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline" onclick="closeModal('expenseModal')">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save Expense</button>
+          <button type="submit" class="btn btn-primary" id="expModalSubmit">Save Expense</button>
         </div>
       </form>
     </div>
@@ -1375,10 +1425,11 @@
   <div class="modal-backdrop" id="employeeModal">
     <div class="modal">
       <div class="modal-header">
-        <div class="modal-title">Add Employee Master</div>
+        <div class="modal-title" id="empModalTitle">Add Employee Master</div>
         <button class="modal-close" onclick="closeModal('employeeModal')">✕</button>
       </div>
       <form id="employeeForm" onsubmit="saveEmployee(event)">
+        <input type="hidden" id="emp_edit_id">
         <div class="modal-body">
           <div class="form-row">
             <div class="form-group">
@@ -1418,7 +1469,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline" onclick="closeModal('employeeModal')">Cancel</button>
-          <button type="submit" class="btn btn-primary">Register Employee</button>
+          <button type="submit" class="btn btn-primary" id="empModalSubmit">Register Employee</button>
         </div>
       </form>
     </div>
@@ -1428,10 +1479,11 @@
   <div class="modal-backdrop" id="attendanceModal">
     <div class="modal">
       <div class="modal-header">
-        <div class="modal-title">Mark Daily Attendance</div>
+        <div class="modal-title" id="attModalTitle">Mark Daily Attendance</div>
         <button class="modal-close" onclick="closeModal('attendanceModal')">✕</button>
       </div>
       <form id="attendanceForm" onsubmit="saveAttendance(event)">
+        <input type="hidden" id="att_edit_id">
         <div class="modal-body">
           <div class="form-row">
             <div class="form-group">
@@ -1467,7 +1519,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline" onclick="closeModal('attendanceModal')">Cancel</button>
-          <button type="submit" class="btn btn-primary">Log Attendance</button>
+          <button type="submit" class="btn btn-primary" id="attModalSubmit">Log Attendance</button>
         </div>
       </form>
     </div>
@@ -1617,49 +1669,183 @@
     function openModal(id) { document.getElementById(id).classList.add('open'); }
     function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 
-    function openItemModal() {
+    function openItemModal(codeToEdit = null) {
       document.getElementById('itemForm').reset();
+      const title = document.getElementById('itemModalTitle');
+      const submitBtn = document.getElementById('itemModalSubmit');
+      const editInput = document.getElementById('m_edit_id');
+
+      if (codeToEdit) {
+        const itm = appData.items.find(i => i.code === codeToEdit);
+        if (itm) {
+          title.textContent = 'Edit Material / Item Master';
+          submitBtn.textContent = 'Update Material';
+          editInput.value = itm.code;
+          document.getElementById('m_item_code').value = itm.code;
+          document.getElementById('m_item_code').readOnly = true;
+          document.getElementById('m_item_name').value = itm.name || '';
+          document.getElementById('m_unit').value = itm.unit || 'KG';
+          document.getElementById('m_category').value = itm.category || '';
+          document.getElementById('m_storage_location').value = itm.location || '';
+          document.getElementById('m_opening_stock').value = itm.openingStock ?? 0;
+          document.getElementById('m_unit_rate').value = itm.unitRate ?? 0;
+          document.getElementById('m_reorder_level').value = itm.reorderLevel ?? 100;
+        }
+      } else {
+        title.textContent = 'Add Item Master / Material';
+        submitBtn.textContent = 'Save Material';
+        editInput.value = '';
+        document.getElementById('m_item_code').readOnly = false;
+      }
       openModal('itemModal');
     }
 
-    function openStockModal() {
+    function openStockModal(indexToEdit = null) {
       document.getElementById('stockForm').reset();
-      document.getElementById('s_date').value = new Date().toISOString().split('T')[0];
+      const title = document.getElementById('stockModalTitle');
+      const submitBtn = document.getElementById('stockModalSubmit');
+      const editInput = document.getElementById('s_edit_id');
       const sel = document.getElementById('s_item_code');
       sel.innerHTML = appData.items.map(i => `<option value="${i.code}">${i.code} — ${i.name}</option>`).join('');
+
+      if (indexToEdit !== null && appData.stock[indexToEdit]) {
+        const s = appData.stock[indexToEdit];
+        title.textContent = 'Edit Stock Movement Entry';
+        submitBtn.textContent = 'Update Movement';
+        editInput.value = indexToEdit;
+        document.getElementById('s_date').value = s.date || '';
+        document.getElementById('s_voucher').value = s.voucher || '';
+        document.getElementById('s_item_code').value = s.itemCode || '';
+        document.getElementById('s_tx_type').value = s.type || 'Receipt';
+        document.getElementById('s_qty').value = s.qtyIn > 0 ? s.qtyIn : s.qtyOut;
+        document.getElementById('s_unit_rate').value = s.rate || '';
+        document.getElementById('s_remarks').value = s.remarks || '';
+      } else {
+        title.textContent = 'Record Stock Movement';
+        submitBtn.textContent = 'Record Movement';
+        editInput.value = '';
+        document.getElementById('s_date').value = new Date().toISOString().split('T')[0];
+      }
       openModal('stockModal');
     }
 
-    function openProductionModal() {
+    function openProductionModal(indexToEdit = null) {
       document.getElementById('productionForm').reset();
-      document.getElementById('p_date').value = new Date().toISOString().split('T')[0];
+      const title = document.getElementById('prodModalTitle');
+      const submitBtn = document.getElementById('prodModalSubmit');
+      const editInput = document.getElementById('p_edit_id');
+
+      if (indexToEdit !== null && appData.production[indexToEdit]) {
+        const p = appData.production[indexToEdit];
+        title.textContent = 'Edit Production Batch';
+        submitBtn.textContent = 'Update Production';
+        editInput.value = indexToEdit;
+        document.getElementById('p_date').value = p.date || '';
+        document.getElementById('p_shift').value = p.shift || 'Shift A';
+        document.getElementById('p_model').value = p.model || '';
+        document.getElementById('p_code').value = p.code || '';
+        document.getElementById('p_supervisor').value = p.supervisor || '';
+        document.getElementById('p_produced').value = p.produced || 0;
+        document.getElementById('p_rejected').value = p.rejected || 0;
+        document.getElementById('p_remarks').value = p.remarks || '';
+      } else {
+        title.textContent = 'Log Daily Production';
+        submitBtn.textContent = 'Save Production';
+        editInput.value = '';
+        document.getElementById('p_date').value = new Date().toISOString().split('T')[0];
+      }
       openModal('productionModal');
     }
 
-    function openExpenseModal() {
+    function openExpenseModal(indexToEdit = null) {
       document.getElementById('expenseForm').reset();
-      document.getElementById('e_date').value = new Date().toISOString().split('T')[0];
-      document.getElementById('e_voucher').value = "EXP-26-" + Math.floor(100 + Math.random() * 900);
+      const title = document.getElementById('expModalTitle');
+      const submitBtn = document.getElementById('expModalSubmit');
+      const editInput = document.getElementById('e_edit_id');
+
+      if (indexToEdit !== null && appData.expenses[indexToEdit]) {
+        const e = appData.expenses[indexToEdit];
+        title.textContent = 'Edit Expense Voucher';
+        submitBtn.textContent = 'Update Expense';
+        editInput.value = indexToEdit;
+        document.getElementById('e_date').value = e.date || '';
+        document.getElementById('e_voucher').value = e.voucher || '';
+        document.getElementById('e_category').value = e.category || 'Raw Materials';
+        document.getElementById('e_payment_mode').value = e.mode || 'Bank Transfer / NEFT';
+        document.getElementById('e_paid_to').value = e.paidTo || '';
+        document.getElementById('e_amount').value = e.amount || 0;
+        document.getElementById('e_approved_by').value = e.approvedBy || '';
+      } else {
+        title.textContent = 'Record Daily Expense';
+        submitBtn.textContent = 'Save Expense';
+        editInput.value = '';
+        document.getElementById('e_date').value = new Date().toISOString().split('T')[0];
+        document.getElementById('e_voucher').value = "EXP-26-" + Math.floor(100 + Math.random() * 900);
+      }
       openModal('expenseModal');
     }
 
-    function openEmployeeModal() {
+    function openEmployeeModal(idToEdit = null) {
       document.getElementById('employeeForm').reset();
-      document.getElementById('emp_id').value = "EMP-00" + (appData.employees.length + 1);
+      const title = document.getElementById('empModalTitle');
+      const submitBtn = document.getElementById('empModalSubmit');
+      const editInput = document.getElementById('emp_edit_id');
+
+      if (idToEdit) {
+        const emp = appData.employees.find(m => m.id === idToEdit);
+        if (emp) {
+          title.textContent = 'Edit Employee Record';
+          submitBtn.textContent = 'Update Employee';
+          editInput.value = emp.id;
+          document.getElementById('emp_id').value = emp.id;
+          document.getElementById('emp_id').readOnly = true;
+          document.getElementById('emp_name').value = emp.name || '';
+          document.getElementById('emp_dept').value = emp.dept || 'Production & Assembly';
+          document.getElementById('emp_desig').value = emp.designation || '';
+          document.getElementById('emp_phone').value = emp.phone || '';
+          document.getElementById('emp_salary').value = emp.salary || 0;
+        }
+      } else {
+        title.textContent = 'Add Employee Master';
+        submitBtn.textContent = 'Register Employee';
+        editInput.value = '';
+        document.getElementById('emp_id').readOnly = false;
+        document.getElementById('emp_id').value = "EMP-00" + (appData.employees.length + 1);
+      }
       openModal('employeeModal');
     }
 
-    function openAttendanceModal() {
+    function openAttendanceModal(indexToEdit = null) {
       document.getElementById('attendanceForm').reset();
-      document.getElementById('att_date').value = new Date().toISOString().split('T')[0];
+      const title = document.getElementById('attModalTitle');
+      const submitBtn = document.getElementById('attModalSubmit');
+      const editInput = document.getElementById('att_edit_id');
       const sel = document.getElementById('att_emp_id');
       sel.innerHTML = appData.employees.map(e => `<option value="${e.id}">${e.id} — ${e.name} (${e.dept})</option>`).join('');
+
+      if (indexToEdit !== null && appData.attendance[indexToEdit]) {
+        const a = appData.attendance[indexToEdit];
+        title.textContent = 'Edit Attendance Record';
+        submitBtn.textContent = 'Update Attendance';
+        editInput.value = indexToEdit;
+        document.getElementById('att_date').value = a.date || '';
+        document.getElementById('att_emp_id').value = a.empId || '';
+        document.getElementById('att_status').value = a.status || 'Present';
+        document.getElementById('att_hours').value = a.hours || 8;
+        document.getElementById('att_overtime').value = a.overtime || 0;
+      } else {
+        title.textContent = 'Mark Daily Attendance';
+        submitBtn.textContent = 'Log Attendance';
+        editInput.value = '';
+        document.getElementById('att_date').value = new Date().toISOString().split('T')[0];
+      }
       openModal('attendanceModal');
     }
 
     // Form Submissions
     function saveItem(e) {
       e.preventDefault();
+      const editCode = document.getElementById('m_edit_id').value.trim();
       const code = document.getElementById('m_item_code').value.trim();
       const item = {
         code,
@@ -1671,15 +1857,33 @@
         reorderLevel: Number(document.getElementById('m_reorder_level').value) || 0,
         location: document.getElementById('m_storage_location').value.trim()
       };
-      const existing = appData.items.findIndex(i => i.code === code);
-      if (existing >= 0) appData.items[existing] = item;
-      else appData.items.push(item);
+
+      if (editCode) {
+        const idx = appData.items.findIndex(i => i.code === editCode);
+        if (idx >= 0) appData.items[idx] = item;
+      } else {
+        const existing = appData.items.findIndex(i => i.code === code);
+        if (existing >= 0) {
+          alert('Item code already exists! Updating existing material.');
+          appData.items[existing] = item;
+        } else {
+          appData.items.push(item);
+        }
+      }
       closeModal('itemModal');
       persist();
     }
 
+    function deleteItem(code) {
+      if (confirm(`Are you sure you want to delete material "${code}"? This will remove it from Item Master.`)) {
+        appData.items = appData.items.filter(i => i.code !== code);
+        persist();
+      }
+    }
+
     function saveStock(e) {
       e.preventDefault();
+      const editIdx = document.getElementById('s_edit_id').value;
       const type = document.getElementById('s_tx_type').value;
       const qty = Number(document.getElementById('s_qty').value) || 0;
       const inTypes = ["Receipt", "Production In", "Sales Return", "Positive Adjustment"];
@@ -1688,7 +1892,7 @@
       const itm = appData.items.find(i => i.code === itemCode);
       const rate = Number(document.getElementById('s_unit_rate').value) || (itm ? itm.unitRate : 0);
 
-      appData.stock.unshift({
+      const entry = {
         date: document.getElementById('s_date').value,
         voucher: document.getElementById('s_voucher').value.trim(),
         itemCode,
@@ -1697,16 +1901,34 @@
         qtyOut: isIn ? 0 : qty,
         rate,
         remarks: document.getElementById('s_remarks').value.trim()
-      });
+      };
+
+      if (editIdx !== '') {
+        const idx = Number(editIdx);
+        if (!isNaN(idx) && appData.stock[idx]) {
+          appData.stock[idx] = entry;
+        }
+      } else {
+        appData.stock.unshift(entry);
+      }
       closeModal('stockModal');
       persist();
     }
 
+    function deleteStock(index) {
+      if (confirm('Are you sure you want to delete this stock movement record?')) {
+        appData.stock.splice(index, 1);
+        persist();
+      }
+    }
+
     function saveProduction(e) {
       e.preventDefault();
+      const editIdx = document.getElementById('p_edit_id').value;
       const produced = Number(document.getElementById('p_produced').value) || 0;
       const rejected = Number(document.getElementById('p_rejected').value) || 0;
-      appData.production.unshift({
+
+      const entry = {
         date: document.getElementById('p_date').value,
         shift: document.getElementById('p_shift').value,
         model: document.getElementById('p_model').value.trim(),
@@ -1718,14 +1940,31 @@
         unit: "NOS",
         supervisor: document.getElementById('p_supervisor').value.trim(),
         remarks: document.getElementById('p_remarks').value.trim()
-      });
+      };
+
+      if (editIdx !== '') {
+        const idx = Number(editIdx);
+        if (!isNaN(idx) && appData.production[idx]) {
+          appData.production[idx] = entry;
+        }
+      } else {
+        appData.production.unshift(entry);
+      }
       closeModal('productionModal');
       persist();
     }
 
+    function deleteProduction(index) {
+      if (confirm('Are you sure you want to delete this production batch log?')) {
+        appData.production.splice(index, 1);
+        persist();
+      }
+    }
+
     function saveExpense(e) {
       e.preventDefault();
-      appData.expenses.unshift({
+      const editIdx = document.getElementById('e_edit_id').value;
+      const entry = {
         date: document.getElementById('e_date').value,
         voucher: document.getElementById('e_voucher').value.trim(),
         category: document.getElementById('e_category').value,
@@ -1734,13 +1973,30 @@
         amount: Number(document.getElementById('e_amount').value) || 0,
         approvedBy: document.getElementById('e_approved_by').value.trim(),
         remarks: ""
-      });
+      };
+
+      if (editIdx !== '') {
+        const idx = Number(editIdx);
+        if (!isNaN(idx) && appData.expenses[idx]) {
+          appData.expenses[idx] = entry;
+        }
+      } else {
+        appData.expenses.unshift(entry);
+      }
       closeModal('expenseModal');
       persist();
     }
 
+    function deleteExpense(index) {
+      if (confirm('Are you sure you want to delete this expense voucher?')) {
+        appData.expenses.splice(index, 1);
+        persist();
+      }
+    }
+
     function saveEmployee(e) {
       e.preventDefault();
+      const editId = document.getElementById('emp_edit_id').value.trim();
       const id = document.getElementById('emp_id').value.trim();
       const emp = {
         id,
@@ -1751,18 +2007,33 @@
         salary: Number(document.getElementById('emp_salary').value) || 0,
         active: true
       };
-      const existing = appData.employees.findIndex(e => e.id === id);
-      if (existing >= 0) appData.employees[existing] = emp;
-      else appData.employees.push(emp);
+
+      if (editId) {
+        const idx = appData.employees.findIndex(m => m.id === editId);
+        if (idx >= 0) appData.employees[idx] = emp;
+      } else {
+        const existing = appData.employees.findIndex(m => m.id === id);
+        if (existing >= 0) appData.employees[existing] = emp;
+        else appData.employees.push(emp);
+      }
       closeModal('employeeModal');
       persist();
     }
 
+    function deleteEmployee(empId) {
+      if (confirm(`Are you sure you want to delete employee "${empId}"?`)) {
+        appData.employees = appData.employees.filter(m => m.id !== empId);
+        persist();
+      }
+    }
+
     function saveAttendance(e) {
       e.preventDefault();
+      const editIdx = document.getElementById('att_edit_id').value;
       const empId = document.getElementById('att_emp_id').value;
       const emp = appData.employees.find(x => x.id === empId);
-      appData.attendance.unshift({
+
+      const entry = {
         date: document.getElementById('att_date').value,
         empId,
         name: emp ? emp.name : empId,
@@ -1773,9 +2044,25 @@
         hours: Number(document.getElementById('att_hours').value) || 8,
         overtime: Number(document.getElementById('att_overtime').value) || 0,
         remarks: ""
-      });
+      };
+
+      if (editIdx !== '') {
+        const idx = Number(editIdx);
+        if (!isNaN(idx) && appData.attendance[idx]) {
+          appData.attendance[idx] = entry;
+        }
+      } else {
+        appData.attendance.unshift(entry);
+      }
       closeModal('attendanceModal');
       persist();
+    }
+
+    function deleteAttendance(index) {
+      if (confirm('Are you sure you want to delete this attendance record?')) {
+        appData.attendance.splice(index, 1);
+        persist();
+      }
     }
 
     // Render Data
@@ -1860,13 +2147,19 @@
           <td>${itm.reorderLevel}</td>
           <td>${itm.location}</td>
           <td><span class="badge ${badgeClass}">${status}</span></td>
+          <td style="text-align: right;">
+            <div class="actions-cell">
+              <button class="btn-action-edit" onclick="openItemModal('${itm.code}')" title="Edit Material">✏️ Edit</button>
+              <button class="btn-action-delete" onclick="deleteItem('${itm.code}')" title="Delete Material">🗑️ Delete</button>
+            </div>
+          </td>
         </tr>`;
       }).join('');
     }
 
     function renderStock() {
       const tbody = document.getElementById('stockBody');
-      tbody.innerHTML = appData.stock.map(s => {
+      tbody.innerHTML = appData.stock.map((s, idx) => {
         const itm = appData.items.find(i => i.code === s.itemCode);
         const name = itm ? itm.name : '';
         const qty = s.qtyIn > 0 ? s.qtyIn : s.qtyOut;
@@ -1882,13 +2175,19 @@
           <td>₹${Number(s.rate || 0).toLocaleString('en-IN')}</td>
           <td><strong>₹${Number(val).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</strong></td>
           <td style="color: var(--text-muted);">${s.remarks}</td>
+          <td style="text-align: right;">
+            <div class="actions-cell">
+              <button class="btn-action-edit" onclick="openStockModal(${idx})" title="Edit Voucher">✏️ Edit</button>
+              <button class="btn-action-delete" onclick="deleteStock(${idx})" title="Delete Movement">🗑️ Delete</button>
+            </div>
+          </td>
         </tr>`;
       }).join('');
     }
 
     function renderProduction() {
       const tbody = document.getElementById('productionBody');
-      tbody.innerHTML = appData.production.map(p => `<tr>
+      tbody.innerHTML = appData.production.map((p, idx) => `<tr>
         <td>${p.date}</td>
         <td><span class="badge badge-info">${p.shift}</span></td>
         <td><strong>${p.model}</strong></td>
@@ -1900,12 +2199,18 @@
         <td>${p.unit}</td>
         <td>${p.supervisor}</td>
         <td style="color: var(--text-muted);">${p.remarks}</td>
+        <td style="text-align: right;">
+          <div class="actions-cell">
+            <button class="btn-action-edit" onclick="openProductionModal(${idx})" title="Edit Batch">✏️ Edit</button>
+            <button class="btn-action-delete" onclick="deleteProduction(${idx})" title="Delete Batch">🗑️ Delete</button>
+          </div>
+        </td>
       </tr>`).join('');
     }
 
     function renderExpenses() {
       const tbody = document.getElementById('expensesBody');
-      tbody.innerHTML = appData.expenses.map(e => `<tr>
+      tbody.innerHTML = appData.expenses.map((e, idx) => `<tr>
         <td>${e.date}</td>
         <td><strong>${e.voucher}</strong></td>
         <td><span class="badge badge-warning">${e.category}</span></td>
@@ -1914,6 +2219,12 @@
         <td><strong style="color: #f87171;">₹${Number(e.amount).toLocaleString('en-IN', { minimumFractionDigits: 2 })}</strong></td>
         <td>${e.approvedBy}</td>
         <td style="color: var(--text-muted);">${e.remarks || '-'}</td>
+        <td style="text-align: right;">
+          <div class="actions-cell">
+            <button class="btn-action-edit" onclick="openExpenseModal(${idx})" title="Edit Expense">✏️ Edit</button>
+            <button class="btn-action-delete" onclick="deleteExpense(${idx})" title="Delete Expense">🗑️ Delete</button>
+          </div>
+        </td>
       </tr>`).join('');
     }
 
@@ -1928,12 +2239,18 @@
         <td>${e.phone}</td>
         <td>₹${Number(e.salary).toLocaleString('en-IN')}</td>
         <td><span class="badge badge-success">Active</span></td>
+        <td style="text-align: right;">
+          <div class="actions-cell">
+            <button class="btn-action-edit" onclick="openEmployeeModal('${e.id}')" title="Edit Employee">✏️ Edit</button>
+            <button class="btn-action-delete" onclick="deleteEmployee('${e.id}')" title="Delete Employee">🗑️ Delete</button>
+          </div>
+        </td>
       </tr>`).join('');
     }
 
     function renderAttendance() {
       const tbody = document.getElementById('attendanceBody');
-      tbody.innerHTML = appData.attendance.map(a => `<tr>
+      tbody.innerHTML = appData.attendance.map((a, idx) => `<tr>
         <td>${a.date}</td>
         <td><strong>${a.empId}</strong></td>
         <td>${a.name}</td>
@@ -1944,6 +2261,12 @@
         <td>${a.hours} hrs</td>
         <td>${a.overtime ? a.overtime + ' hrs' : '-'}</td>
         <td style="color: var(--text-muted);">${a.remarks || '-'}</td>
+        <td style="text-align: right;">
+          <div class="actions-cell">
+            <button class="btn-action-edit" onclick="openAttendanceModal(${idx})" title="Edit Attendance">✏️ Edit</button>
+            <button class="btn-action-delete" onclick="deleteAttendance(${idx})" title="Delete Attendance">🗑️ Delete</button>
+          </div>
+        </td>
       </tr>`).join('');
     }
 
