@@ -1514,52 +1514,16 @@
 
   <!-- Operations Application Logic -->
   <script>
-    // Initial Seed State (Synced with Django seed and localStorage for zero-latency)
-    const STORAGE_KEY = 'AARADHYA_OPERATIONS_DATA_V1';
+    // Clean initial state (Ready for actual factory input)
+    const STORAGE_KEY = 'AARADHYA_OPERATIONS_DATA_V2';
 
     const defaultData = {
-      items: [
-        { code: "CRGO-M4-027", name: "CRGO Silicon Steel Laminations (0.27mm M4)", category: "Core Laminations", unit: "KG", openingStock: 4500, unitRate: 285.00, reorderLevel: 1200, location: "Bay 1 - Core Stacking" },
-        { code: "EC-COPPER-STRIP", name: "Electrolytic Copper Strips (Paper Insulated)", category: "Winding Conductor", unit: "KG", openingStock: 3200, unitRate: 840.00, reorderLevel: 800, location: "Bay 2 - Coil Winding" },
-        { code: "EC-ALUM-WIRE", name: "EC Grade Aluminum Winding Wire", category: "Winding Conductor", unit: "KG", openingStock: 1800, unitRate: 310.00, reorderLevel: 500, location: "Bay 2 - Coil Winding" },
-        { code: "TRF-OIL-IS335", name: "Transformer Insulating Mineral Oil (IS 335)", category: "Insulation Oil", unit: "LTR", openingStock: 8500, unitRate: 95.00, reorderLevel: 2500, location: "Tank Farm - Section B" },
-        { code: "MS-TANK-630KVA", name: "Mild Steel Fabricated Tank 630 kVA with Fins", category: "Tanks & Enclosures", unit: "SET", openingStock: 12, unitRate: 45000.00, reorderLevel: 4, location: "Bay 4 - Tanking Yard" },
-        { code: "BUSHING-HV-11KV", name: "11kV High Voltage Porcelain Bushings", category: "Bushings & Hardware", unit: "PCS", openingStock: 48, unitRate: 1450.00, reorderLevel: 16, location: "Store Room A - Rack 3" },
-        { code: "BUSHING-LV-1KV", name: "1.1kV Low Voltage Brass Stem Bushings", category: "Bushings & Hardware", unit: "PCS", openingStock: 64, unitRate: 620.00, reorderLevel: 24, location: "Store Room A - Rack 3" },
-        { code: "BUCHHOLZ-RELAY-1", name: "Double Float Buchholz Gas Relay 50mm", category: "Protection & Relays", unit: "PCS", openingStock: 8, unitRate: 4800.00, reorderLevel: 3, location: "Store Room B" },
-        { code: "SILICA-GEL-BRTH", name: "Silica Gel Breather Unit 1.0 KG", category: "Accessories", unit: "PCS", openingStock: 22, unitRate: 950.00, reorderLevel: 8, location: "Store Room B" },
-        { code: "MDI-TEMP-GAUGE", name: "Magnetic Oil Level Indicator & Thermometer", category: "Instrumentation", unit: "PCS", openingStock: 14, unitRate: 2100.00, reorderLevel: 5, location: "Store Room B" }
-      ],
-      stock: [
-        { date: "2026-10-05", voucher: "PO-2026-104", itemCode: "CRGO-M4-027", type: "Receipt", qtyIn: 1500, qtyOut: 0, rate: 285.00, remarks: "Fresh shipment from POSCO India" },
-        { date: "2026-10-12", voucher: "ISSUE-PRD-88", itemCode: "CRGO-M4-027", type: "Issue to Production", qtyIn: 0, qtyOut: 800, rate: 285.00, remarks: "Issued to Core Stacking Batch #630" },
-        { date: "2026-10-08", voucher: "ISSUE-PRD-89", itemCode: "EC-COPPER-STRIP", type: "Issue to Production", qtyIn: 0, qtyOut: 650, rate: 840.00, remarks: "Issued to Coil Winding Bay" },
-        { date: "2026-10-15", voucher: "PO-2026-109", itemCode: "TRF-OIL-IS335", type: "Receipt", qtyIn: 2000, qtyOut: 0, rate: 95.00, remarks: "Direct tanker delivery BDV > 65kV" }
-      ],
-      production: [
-        { date: "2026-10-20", shift: "Shift A", model: "Distribution Transformer 100 kVA 11kV/433V (IS 1180 L2)", code: "DT-100KVA-11", target: 4, produced: 4, rejected: 0, good: 4, unit: "NOS", supervisor: "R. K. Sharma", remarks: "100% routine tests passed" },
-        { date: "2026-10-22", shift: "Shift A", model: "Distribution Transformer 250 kVA 11kV/433V (BEE 2-Star)", code: "DT-250KVA-11", target: 3, produced: 3, rejected: 0, good: 3, unit: "NOS", supervisor: "Mahesh Chand", remarks: "Insulation resistance BDV cleared" },
-        { date: "2026-10-24", shift: "Shift B", model: "Substation Power Transformer 630 kVA 33kV Class", code: "PT-630KVA-33", target: 2, produced: 2, rejected: 0, good: 2, unit: "NOS", supervisor: "R. K. Sharma", remarks: "Heat run test verified" }
-      ],
-      expenses: [
-        { date: "2026-10-18", voucher: "EXP-26-891", category: "Consumables", paidTo: "National Industrial Gas (Nitrogen Purging)", mode: "Bank Transfer / NEFT", amount: 18500.00, approvedBy: "Director - Finance", remarks: "12 cylinders for vacuum drying ovens" },
-        { date: "2026-10-21", voucher: "EXP-26-892", category: "Factory Maintenance", paidTo: "Rajasthan Crane & Hoist Servicing", mode: "Cheque", amount: 24000.00, approvedBy: "Works Head", remarks: "Overhaul of 15T overhead EOT crane" },
-        { date: "2026-10-25", voucher: "EXP-26-893", category: "Electricity & Utilities", paidTo: "JVVNL Bindayaka Substation", mode: "Bank Transfer / NEFT", amount: 142600.00, approvedBy: "Director - Operations", remarks: "HT factory tariffSept-Oct cycle" }
-      ],
-      employees: [
-        { id: "EMP-001", name: "R. K. Sharma", dept: "Testing & QA", designation: "Quality Assurance & Works Head", phone: "+91-9414051052", salary: 65000, active: true },
-        { id: "EMP-002", name: "Mahesh Chand Verma", dept: "Core & Coil Winding", designation: "Senior Winding Supervisor", phone: "+91-7976422576", salary: 42000, active: true },
-        { id: "EMP-003", name: "Prakash Saini", dept: "Production & Assembly", designation: "Core Stacking Lead Fitter", phone: "+91-9829012345", salary: 28000, active: true },
-        { id: "EMP-004", name: "Vikram Rathore", dept: "Stores & Inventory", designation: "Stores & Material Manager", phone: "+91-9785123456", salary: 35000, active: true },
-        { id: "EMP-005", name: "Dinesh Kumar", dept: "Maintenance", designation: "Electrical Maintenance Incharge", phone: "+91-9654123890", salary: 30000, active: true }
-      ],
-      attendance: [
-        { date: "2026-10-26", empId: "EMP-001", name: "R. K. Sharma", dept: "Testing & QA", status: "Present", inTime: "08:30", outTime: "17:00", hours: 8.5, overtime: 0.5, remarks: "Normal duty" },
-        { date: "2026-10-26", empId: "EMP-002", name: "Mahesh Chand Verma", dept: "Core & Coil Winding", status: "Present", inTime: "08:30", outTime: "17:00", hours: 8.5, overtime: 0.5, remarks: "Winding batch inspection" },
-        { date: "2026-10-26", empId: "EMP-003", name: "Prakash Saini", dept: "Production & Assembly", status: "Present", inTime: "08:30", outTime: "17:00", hours: 8.5, overtime: 0.0, remarks: "Core stack alignment" },
-        { date: "2026-10-26", empId: "EMP-004", name: "Vikram Rathore", dept: "Stores & Inventory", status: "Present", inTime: "08:30", outTime: "17:00", hours: 8.5, overtime: 0.0, remarks: "Stores tally" },
-        { date: "2026-10-26", empId: "EMP-005", name: "Dinesh Kumar", dept: "Maintenance", status: "Present", inTime: "08:30", outTime: "17:00", hours: 8.5, overtime: 0.0, remarks: "Compressor servicing" }
-      ]
+      items: [],
+      stock: [],
+      production: [],
+      expenses: [],
+      employees: [],
+      attendance: []
     };
 
     function loadData() {
@@ -1568,6 +1532,7 @@
         try { return JSON.parse(saved); } catch (e) { console.error(e); }
       }
       return defaultData;
+    }
     }
 
     let appData = loadData();
