@@ -2228,10 +2228,114 @@
       checkAuth();
     }
 
+    const API_BASE_URL = 'https://aaradhya-enertech-backend.onrender.com/api';
+
+    async function syncFromBackend() {
+      try {
+        const [dashRes, itemsRes, stockRes, prodRes, expRes, empRes, attRes] = await Promise.all([
+          fetch(`${API_BASE_URL}/dashboard/`).then(r => r.ok ? r.json() : null),
+          fetch(`${API_BASE_URL}/items/`).then(r => r.ok ? r.json() : null),
+          fetch(`${API_BASE_URL}/stock/`).then(r => r.ok ? r.json() : null),
+          fetch(`${API_BASE_URL}/production/`).then(r => r.ok ? r.json() : null),
+          fetch(`${API_BASE_URL}/expenses/`).then(r => r.ok ? r.json() : null),
+          fetch(`${API_BASE_URL}/employees/`).then(r => r.ok ? r.json() : null),
+          fetch(`${API_BASE_URL}/attendance/`).then(r => r.ok ? r.json() : null)
+        ]);
+
+        if (itemsRes && Array.isArray(itemsRes)) {
+          appData.items = itemsRes.map(i => ({
+            code: i.item_code,
+            name: i.item_name,
+            category: i.category,
+            unit: i.unit,
+            openingStock: Number(i.opening_stock) || 0,
+            unitRate: Number(i.unit_rate) || 0,
+            reorderLevel: Number(i.reorder_level) || 0,
+            location: i.storage_location
+          }));
+        }
+
+        if (stockRes && Array.isArray(stockRes)) {
+          appData.stock = stockRes.map(s => ({
+            date: s.date,
+            voucher: s.voucher_ref,
+            itemCode: s.item_code,
+            type: s.transaction_type,
+            qtyIn: Number(s.qty_in) || 0,
+            qtyOut: Number(s.qty_out) || 0,
+            rate: Number(s.unit_rate) || 0,
+            remarks: s.remarks
+          }));
+        }
+
+        if (prodRes && Array.isArray(prodRes)) {
+          appData.production = prodRes.map(p => ({
+            date: p.date,
+            shift: p.shift,
+            model: p.product_model,
+            code: p.product_code,
+            target: p.target_qty,
+            produced: p.produced_qty,
+            rejected: p.rejected_qty,
+            good: p.good_qty,
+            unit: p.unit,
+            supervisor: p.supervisor,
+            remarks: p.remarks
+          }));
+        }
+
+        if (expRes && Array.isArray(expRes)) {
+          appData.expenses = expRes.map(e => ({
+            date: e.date,
+            voucher: e.voucher_no,
+            category: e.category,
+            paidTo: e.description_paid_to,
+            mode: e.payment_mode,
+            amount: Number(e.amount) || 0,
+            approvedBy: e.approved_by,
+            remarks: e.remarks
+          }));
+        }
+
+        if (empRes && Array.isArray(empRes)) {
+          appData.employees = empRes.map(m => ({
+            id: m.employee_id,
+            name: m.employee_name,
+            dept: m.department,
+            designation: m.designation,
+            phone: m.phone,
+            salary: Number(m.monthly_salary) || 0,
+            active: m.is_active
+          }));
+        }
+
+        if (attRes && Array.isArray(attRes)) {
+          appData.attendance = attRes.map(a => ({
+            date: a.date,
+            empId: a.employee_code,
+            name: a.employee_name,
+            dept: a.department,
+            status: a.status,
+            inTime: a.in_time || "08:30",
+            outTime: a.out_time || "17:00",
+            hours: Number(a.hours) || 8,
+            overtime: Number(a.overtime_hrs) || 0,
+            remarks: a.remarks
+          }));
+        }
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+        renderAll();
+      } catch (err) {
+        console.warn('Backend sync failed, using local offline cache:', err);
+      }
+    }
+
     // Initial render
     window.addEventListener('DOMContentLoaded', () => {
       checkAuth();
       renderAll();
+      syncFromBackend();
     });
   </script>
 </body>
